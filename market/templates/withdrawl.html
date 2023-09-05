@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Withdraw</title>
+    
+</head>
+<style>body{
+    background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+    font-family: Arial, sans-serif;
+}
+.container {
+    width: 70vw;
+    height: 70vh;
+    margin: 50px auto;
+    padding: 20px;
+ background-image: url(https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+    border-radius: 65px;
+    background-size: cover;
+    animation: backgroundAnimation 7s linear infinite;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] ,
+input[type="password"],
+input[type="refercode"] 
+{
+    width: 80%;
+    margin-left: 35px;
+    padding: 30px;
+    border: 1px solid #797575;
+    border-color: #4eb5dd;
+    border-radius: 35px;
+    font-size: 21px;  
+}
+
+input[type="submit"] 
+{
+ 
+    width: 50%;
+    margin-left: 162px;
+    padding: 10px;
+    border: none;
+    border-radius: 24px;
+    background-color: #62cdff;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 21px;
+    font-style: normal;
+    font: bold;
+    transition: 0.3s;
+  }
+  
+  input[type="submit"] :hover {
+    background-color: #1278cc;
+  }
+
+
+/* input {
+    width: 80%;
+    margin-left: 35px;
+    padding: 30px;
+    border: 1px solid #797575;
+    border-color: #4eb5dd;
+    border-radius: 35px;
+    font-size: 21px;
+} */
+
+button {
+    width: 50%;
+    padding: 10px;
+    background-color: #62cdff;
+    color: #000000;
+    text-shadow: #240e0e;
+    margin-left: 19%;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color:  #62cdff;
+}
+
+button:focus {
+    outline: none;
+}
+.d{
+    color: white;
+    font-size: 25px;
+    height: 63px;
+    margin-left: 163px;
+    /* font-family: serif; */
+
+}
+ .link{
+    padding-left: 35%;
+    margin: 49px;
+    font-size: 23px;
+    
+    color: #0a8efa;
+   font-size: 17px;
+    font-style: italic;
+ }
+/* Animation for form fields */
+input:focus {
+    border-color: #4eb5dd;
+    box-shadow: 0 0 5px #0a8efa;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+}
+.h3{
+    margin-bottom: 30px;
+    background: linear-gradient(to right,#00A8FF, #8C55AA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: color-gradient 3s linear infinite;
+  }
+
+  .flash-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            text-align: center;
+            display: none;
+        }
+
+        .flash-message.show {
+            display: block;
+        }
+        .container1{
+    margin-top: 46px;
+    margin-left: 29px;
+    border: 1px solid lightskyblue;
+
+
+    /* box-shadow: 0 0 5px #0a8efa; */
+    border-radius: 15px;
+    height: 396px;
+    width: 90%;
+  }
+  span{
+    color: red;
+    font-size: 21px;
+    margin-top: 10px;
+    margin-left: 30px;
+  }
+
+  
+  </style>
+<body>
+    <div class="container">
+        <h1 class="h3">Withdraw Amount</h1>
+        <form method="POST" class="form-withdrawl">
+          
+            <div class="form-group" >
+                <input class="form-control" id="withdraw" name="withdraw" placeholder="Enter amount(Tax 10%)" required="" type="number" value="">
+  
+               </div>
+            <div class="form-group">
+                <!-- <label for="bank-name">Bank Name</label> -->
+                <input class="form-control" id="ac_name" name="ac_name" placeholder="Bank name" required="" type="text" value="">
+            </div>
+            <div class="form-group">
+                <!-- <label for="ifsc-code">IFSC Code</label> -->
+                <input class="form-control" id="ac_number" name="ac_number" placeholder="Account number" required="" type="number" value="">
+            </div>
+            <div class="form-group">
+                <!-- <label for="ifsc-code">IFSC Code</label> -->
+                <input class="form-control" id="ac_ifsc" name="ac_ifsc" placeholder="IFSC code" required="" type="text" value="">
+
+            </div>
+           
+            <div class="form-group">
+                <!-- <label for="holder-name">Account Holder Name</label> -->
+                <input class="form-control" id="h_name" name="h_name" placeholder="Holder name" required="" type="text" value="">
+    
+            </div>
+            <!-- <button> -->
+            <input class="btn btn-lg btn-block btn-primary" id="submit" name="submit" type="submit" value="Withdraw">
+            <!-- </button> -->
+            <br><br> <a href="{{ url_for('withdrawls')}}" class="link"><b><i></i>withdraw record</b></a></p>
+        </form>
+        <div class="container1">
+            
+            <h5 style="font-size: 21px; margin-left: 30px;">
+                Balance: {{current_user.budget}}
+            </h5>
+            <span>*Minimun withdrawal amount is: 130</span>
+            <br>
+            <br>
+            <span>*Withdrawal time: 09:00-18:00(daily Withdrawal)</span>
+            <br>
+            <br>
+            <span>*Arrival time:15 mintues-24 hours (subject to bank transfer time)</span>
+            <br>
+        </div>
+    </div>
+    
+    
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+  <div class="flash-message" id="flash-message">
+      {{ message }}
+  </div>
+      {% endfor %} 
+    {% endif %}  
+  {% endwith %}  
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var flashMessage = document.getElementById('flash-message');
+          flashMessage.classList.add('show');
+
+          setTimeout(function() {
+              flashMessage.classList.remove('show');
+          }, 3000);
+      });
+  </script>
+</body>
+</html>
+
+
+<!-- <form method="post" class="form-withdrawl"> -->
+        
+    
+    <!-- <input class="form-control" id="h_name" name="h_name" placeholder="Holder name" required="" type="text" value="">
+    
+    <input class="form-control" id="ac_name" name="ac_name" placeholder="Bank name" required="" type="text" value="">
+   
+    <input class="form-control" id="ac_number" name="ac_number" placeholder="Account number" required="" type="number" value="">
+    
+    <input class="form-control" id="ac_ifsc" name="ac_ifsc" placeholder="Ifsc code" required="" type="text" value="">
+
+    <input class="form-control" id="withdraw" name="withdraw" placeholder="Enter amount" required="" type="number" value="">
+    <br>
+    <input class="btn btn-lg btn-block btn-primary" id="submit" name="submit" type="submit" value="Withdraw">
+    
+    
+ </form> -->

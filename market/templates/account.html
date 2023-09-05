@@ -1,0 +1,32 @@
+{% extends 'base.html' %} 
+{% block title %} 
+account record 
+{% endblock %} 
+{% block content %} 
+<div class="div1" style=" height: 40px;">
+    <div class="navbar" style="justify-content: center; text-align: center;">
+        <h6>account record</h6>
+    </div>
+</div>
+<nav class="navbar" style="margin-left: 2%; margin-right: 2%; border-color: black; border: 1px solid; box-sizing: border-box;">
+    <a href="{{ url_for('withdrawls') }}" class="nav-link">
+    <span class="span1" style="margin-left: 5%;">Withdrwal</span>
+    </a>
+    <a href="{{ url_for('recharge')}}" class="nav-link">
+    <span class="span2" style="margin-right: 5%;">Recharge</span>
+    </a>
+</nav>
+
+    {% for child in children %}
+    <nav class="navbar1" style="background-color: blanchedalmond; margin-top: 10px; margin-left: 2%; margin-right: 2%; height: 35px;">
+        <div class="container" style="color: blueviolet; font-size: 10px;">
+            {{child.withdraw_time}}
+            </div>
+    <div class="container" style="color: blueviolet;">
+    Withdrawl -{{child.withdraw}}
+    </div>
+    </nav>
+    {% endfor %}
+
+{% endblock %} 
+{% include 'includes/icon.html' %}

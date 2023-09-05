@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block title %}
+    Withdraw record
+{% endblock %}
+{% block content %}
+    
+    
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Withdraw Record</title>
+    <style>
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+          
+            font-family: Arial, sans-serif;
+        background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 10%;
+            padding:20px;
+            background-image: url(https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+            background-size: cover;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            
+            animation: backgroundAnimation 7s linear infinite;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }w
+}
+        
+
+        h1 {
+            text-align: center;
+            background: linear-gradient(to right,#00A8FF, #8C55AA);
+            -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 1px solid rgb(9, 164, 236);
+            
+        }
+
+        th, td {
+            padding: 12px 8px;
+            text-align: left;
+            border-bottom: 1px solid #61bcd8;
+            border-left: 1px solid lightseagreen;
+        }
+
+        th {
+           /* background-color:aqua; */
+           background-size:auto;
+            font-weight:bolder;
+            font-size: 20px;
+           border-left: 1px solid rgb(0, 183, 255);
+        }
+
+        tr:nth-child(even) {
+            background-color: #b6d9dd41;
+            border-bottom: 1px solid rgb(178, 225, 247);
+        }
+
+        tr {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        tr:nth-child(odd) {
+            animation-delay: 0.1s;
+            border-right: 1px solid rgb(0, 195, 255);
+        }
+
+        tr:nth-child(even) {
+            animation-delay: 0.2s;
+            border-bottom: 1px solid rgb(0, 255, 213);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recharge Record</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for record in records %} 
+                <tr>
+                    <td>{{record.rech_time}}</td>
+                    <td>{{record.rech_amount}}</td>
+                    <td>{{record.withdraw_status}}</td>
+
+                </tr>
+                {% endfor %}
+                <!-- Add more table rows with respective date, amount, and status -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+    
+   
+
+{% endblock %}
+{% include 'includes/icon.html' %}

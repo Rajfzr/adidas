@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% block title %}
+    Signup
+{% endblock %}
+{% block content %} 
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup </title>
+  <link rel="stylesheet" type="text/css" href="signup.css">
+  <style>
+    body {
+    background-image: url('https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais')  ;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+
+  justify-content: center;
+  background-size: cover;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.signup-form {
+  width: 350px;
+    background-image: url('https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais') ;
+    background-size: cover;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 10 10 10px rgba(24, 185, 177, 0.1);
+    animation: backgroundAnimation 7s linear infinite;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.signup-form h2 {
+  margin-bottom: 20px;
+}
+
+.textbox {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* input[type="text"],
+input[type="email"],
+input[type="password"] ,
+input[type="password"],
+input[type="refercode"] */
+/* {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #084c83;
+  border: none;
+  border-radius: 9px;
+  border-bottom: 1px solid #726d6d;
+  outline: none;
+  background-color: transparent;
+} */
+
+button {
+  font-size: 16px;
+  width: 82%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #62cdff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1278cc;
+}
+
+.cartoon-image {
+  width: 40px;
+  animation: spin 1s infinite linear;
+  align-self: center;
+    width: 40%;
+    height: 10%;
+    float: center ;
+    bottom: 30%;
+   
+    
+    
+    
+  /* transform: translate(-40%, -10%); 
+}
+
+@keyframes spin {
+  0% {
+    transform:rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+   */
+}
+.h3{
+
+    background: linear-gradient(to right,#00A8FF, #8C55AA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: color-gradient 3s linear infinite;
+  }
+  
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="signup-form">
+        <img src="https://seeklogo.com/images/T/TATA-logo-B17191F4CA-seeklogo.com.png" alt="" class="cartoon-image">
+      <span><h2 class="h3">Create Account</h2></span>
+      <form method="POST" class="form-register">
+        <div class="textbox">
+          <input class="form-control" id="username" maxlength="30" minlength="3" name="username" placeholder="Mobile no." required="" type="text" value="">
+        </div>
+        <div class="textbox">
+       
+          <input class="form-control" id="email_address" name="email_address" placeholder="Email Address" required="" type="text" value="">
+        </div>
+        <div class="textbox">
+         
+          <input class="form-control" id="password1" minlength="6" name="password1" placeholder="Password" required="" type="password" value="">
+        </div>
+        <div class="textbox">
+         
+          <input class="form-control" id="password2" name="password2" placeholder="Confirm Password" required="" type="password" value="">
+        </div>
+        <div class="textbox">
+         
+          <input class="form-control" id="referral_code" name="referral_code" type="text" value="{{request.args.get('referral_code')}}"> 
+        </div>
+        <input class="btn btn-lg btn-block btn-primary" id="submit" name="submit" type="submit" value="Signup">
+          <p class="signup-link">if you have an account? <a href="{{ url_for('login_page')}}" class="link"><b><i></i>Login</b></a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+
+{% endblock %}

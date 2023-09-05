@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}
+ Income
+{% endblock %} 
+{% block content %}
+
+Today Income:{{ current_user.today_income }}
+{{ current_user.check }}
+{% endblock %}
+{% include 'includes/icon.html' %}

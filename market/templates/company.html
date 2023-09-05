@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plan record</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+         @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        body {
+            background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+          
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            width: 96%;
+            max-width: 500px;
+          background-image: url(https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+          background-size: auto;
+            border: 1.5px solid #05b2f7;
+            border-radius: 22px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            animation: backgroundAnimation 7s linear infinite;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+        
+
+        h1 {
+            font-size: 24px;
+            background: linear-gradient(to right,#00A8FF, #8C55AA);
+            -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 1px solid rgb(32, 132, 178);
+           
+        }
+
+         th,td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #09d6fa;
+            border-left: 1px solid rgb(13, 125, 218);
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Plan Record</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <!-- <th>Date</th> -->
+                        <th>Plan Name</th>
+                        <th>Today Income</th>
+                        <th>Yesterday Income</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    {% for boy in boys %}
+                    <tr>
+                    <!-- <td></td> -->
+                    <td>{{boy.item_name}}</td>
+                    <td>{{boy.to_income}}</td>
+                    <td>{{boy.yes_income}}</td>
+                    <td>{{boy.tol_income}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- <script>
+        // Sample data for the table
+        var data = [
+            { date: "2023-07-08", plan: "Plan 1", todayIncome: "$100", yesterdayIncome: "$80", total: "$500" },
+            { date: "2023-07-09", plan: "Plan 2", todayIncome: "$200", yesterdayIncome: "$150", total: "$800" },
+            { date: "2023-07-10", plan: "Plan 3", todayIncome: "$150", yesterdayIncome: "$120", total: "$650" }
+             
+        ]; -->
+<!-- 
+        // Function to create table rows
+        function createTableRow(item) {
+            var row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${item.date}</td>
+                <td>${item.plan}</td>
+                <td>${item.todayIncome}</td>
+                <td>${item.yesterdayIncome}</td>
+                <td>${item.total}</td>
+            `;
+            return row;
+        }
+
+        // Function to animate table rows
+        function animateTableRows(rows) {
+            rows.forEach(function (row, index) {
+                setTimeout(function () {
+                    row.style.opacity = "1";
+                }, index * 200); // Adjust the animation speed here (milliseconds)
+            });
+        }
+
+        // Populate the table with data
+        var tableBody = document.getElementById("tableBody");
+        var rows = data.map(createTableRow);
+        tableBody.append(...rows);
+
+        // Animate the table rows
+        animateTableRows(rows); -->
+    </script>
+</body>
+</html>

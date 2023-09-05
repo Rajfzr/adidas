@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment2</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+        background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+      background-color: #f9f9f9;
+      animation: fade-in 1s;
+      width: 80%;
+      height: 90%;
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .box h1 {
+      text-align: center;
+    }
+
+    .box p {
+      text-align: center;
+    }
+
+    .red-text {
+      color: red;
+    }
+
+    .qr-code {
+      display: block;
+      margin-top: 36px;
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .upi-id {
+      font-size: 27px;
+      margin-top: 30px;
+      margin-bottom: 60px;
+      padding: 33px;
+      width: 364px;
+      background-color: #d8dbdb33;
+      border: 1px solid #a39f9f;
+      border-radius: 9px;
+      
+    }
+    
+
+    .copy-button {
+      padding: 23px 35px;
+      border: 1px solid rgba(3, 91, 255, 0.979);
+      border-radius: 5px;
+      background-color: #ffffff;
+      color: rgb(54, 52, 52);
+      cursor: pointer;
+      font-size: 25px;
+    }
+
+    .copy-button:hover {
+      background-color: #b3eff394;
+    }
+
+    .box2{
+        border: 2px solid rgb(32, 137, 178);
+        margin-left: -8px;
+        width: 50vw;
+        padding: 53px;
+        border-radius: 20px;
+    }
+
+    .input-box {
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      padding: 25px;
+      width: 88%;
+      font-size: 20px;
+      border: 1px solid #8b8989;
+      border-radius: 5px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="number"]:hover,
+    input[type="number"]:focus {
+      border-color: #12d0ff;
+    }
+
+    .submit-button {
+      margin-top: 10px;
+      padding: 18px 35px;
+      font-size: 27px;
+      margin-left: 165px;
+      border: 1px solid rgb(20, 150, 226);
+      border-radius: 5px;
+      background-color: #ffffff;
+      color: rgb(41, 39, 39);
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+      background-color: #b0d0f588;
+    }
+    .mail{
+        color: rgb(0, 140, 255);
+        margin-top: 25px;
+    }
+    
+    .flash-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            text-align: center;
+            display: none;
+        }
+
+        .flash-message.show {
+            display: block;
+        }
+        .instruction{
+          color: red;
+          margin-top: 20px;
+        }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Scan this QR to pay</h1>
+      <p>Or Take a Screenshot and Save, Then Open the Payment App to Scan</p>
+      <img class="qr-code" src="https://i.postimg.cc/Jn2T766B/IMG-20230708-142422.jpg" alt="QR Code">
+      <p class="red-text">Or Directly Transfer to Under Upi</p>
+      <p class="upi-id"><b>parmeenaparmeena0-2@okhdfcbank</b></p>
+      <button class="copy-button" onclick="copyUPI()"><b style="color: #0077ff;">Copy UPI</b></button> <hr><hr><hr>
+ 
+      <form method="post" class="form-recharge">
+      <div class="box2">
+        <div class="input-box">
+          <b>Amount</b> <input class="form-control" id="rech_amount" name="rech_amount" placeholder="Enter amount" required="" type="number" value="">
+        </div>
+        <div class="input-box">
+          <b>Reference No.</b>      <input class="form-control" id="utr" name="utr" placeholder="UTR (UPI Ref. ID) - 12 digits" required="" type="number" value="">
+        </div>
+         <input class="submit-button" id="submit" name="submit" type="submit" value="Submit">
+      </div>
+      </form>
+      
+    
+      <div class="mail">
+        <i class="fa-solid fa-envelope" style="color: #0590fa; margin-right:7px;"></i>
+        <b>tatagroup1111@gmail.com [24x7] Help&Support</b><br><b style=" margin-left: 110px;">Complaint feedback</b> <hr>
+      </div>
+      <div class="instruction">
+        <p>*Minimum Recharge amount rs499</p>
+        <p>*Confirm the recharge amount and fill UTR correctly</p>
+        <p>*If recharge amount have not recieved within 15minute,
+         contact  with costumer service</p>
+      </div>
+    </div>
+    
+
+
+   
+     
+    </div>
+  </div>
+
+  <script>
+    function copyUPI() {
+      var upiText = "parmeenaparmeena0-2@okhdfcbank";
+      navigator.clipboard.writeText(upiText).then(function() {
+        alert("UPI copied: " + upiText);
+      }, function(err) {
+        console.error("Failed to copy UPI: ", err);
+      });
+    }
+
+    function submitForm() {
+      var amount = document.getElementById("amount").value;
+      var refNo = document.getElementById("refNo").value;
+      
+      if (amount && refNo) {
+        console.log("Amount:", amount);
+        console.log("Reference No:", refNo);
+        // Perform further processing or submit the form
+      } else {
+        alert("Please enter both amount and reference number");
+      }
+    }
+  </script>
+     <!-- <form method="post" class="form-recharge">
+      {{ form.hidden_tag() }}
+      {{ form.rech_amount.label() }}
+      {{ form.rech_amount(class="form-control", placeholder="Enter amount") }}
+      {{ form.utr.label() }}
+      {{ form.utr(class="form-control", placeholder="Enter UTR number") }}
+    
+      <br>
+      {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+      
+   </form> -->
+ {% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+     {% for category, message in messages %}
+ <div class="flash-message" id="flash-message">
+     {{ message }}
+ </div>
+     {% endfor %} 
+   {% endif %}  
+ {% endwith %}  
+ <script>
+     document.addEventListener('DOMContentLoaded', function() {
+         var flashMessage = document.getElementById('flash-message');
+         flashMessage.classList.add('show');
+
+         setTimeout(function() {
+             flashMessage.classList.remove('show');
+         }, 3000);
+     });
+ </script>
+</body>
+</html>
+

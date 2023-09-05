@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flash Message Example</title>
+    <style>
+        .flash-message {
+            position: fixed;
+            top: 15%;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            text-align: center;
+            display: none;
+        }
+
+        .flash-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+    <div class="flash-message" id="flash-message">
+        {{ message }}
+    </div>
+        {% endfor %} 
+      {% endif %}  
+    {% endwith %}  
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var flashMessage = document.getElementById('flash-message');
+            flashMessage.classList.add('show');
+
+            setTimeout(function() {
+                flashMessage.classList.remove('show');
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

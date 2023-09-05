@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+{% block title %} 
+plan record 
+{% endblock %} 
+{% block content %} 
+<div class="div1" style="background-color: rgb(171, 131, 189);">
+    <div class="navbar" style="justify-content: center; text-align: center;">
+        <h5>plan record</h5>
+    </div>
+</div>
+{% endblock %} 
+{% include 'includes/icon.html' %}
+
+
+
+
+{% extends 'base.html' %}
+{% block title %}
+  Withdrawal Page 
+{% endblock %} 
+{% block content %}
+
+     
+   <div class="container" style="background-color: rgb(171, 131, 189);">
+     <form method="post" class="form-recharge">
+        {{ form.hidden_tag() }}
+        {{ form.rech_amount.label() }}
+        {{ form.rech_amount(class="form-control", placeholder="Enter amount") }}
+        {{ form.utr.label() }}
+        {{ form.utr(class="form-control", placeholder="Enter UTR number") }}
+      
+        <br>
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+        
+     </form>
+
+
+{% endblock %}
+{% include 'includes/icon.html' %}

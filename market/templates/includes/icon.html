@@ -1,0 +1,83 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+      /* fixed nav baar css */
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+      }
+      
+      .nav-item {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+      }
+      
+      .nav-item:hover {
+        color: #0bc9e2;
+      }
+      
+      .logo {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 5px;
+      }
+      
+      .logo-name {
+        margin-top: 5px;
+        font-size: 10px;
+      }
+
+
+      
+    
+      
+     
+  </style>
+</head>
+<body>
+<!-- fixed nav baar -->
+<div>
+<nav class="bottom-nav">
+    <a href="{{ url_for('market_page')}}" class="nav-item">
+        <i class="fa-solid fa-house"></i>
+      <span class="logo-name">HOME</span>
+    </a>
+    <a href="{{ url_for('referrals', referral_code = current_user.referral_code) }}" class="nav-item">
+        <i class="fa-solid fa-user-plus"></i>
+      <span class="logo-name">INVITE</span>
+    </a>
+    <a href="{{url_for('team')}}" class="nav-item">
+        <i class="fa-solid fa-people-group"></i>
+      <span class="logo-name">TEAM</span>
+    </a>
+    <a href="https://t.me/tatacustmerservice" class="nav-item">
+        <i class="fa-brands fa-telegram"></i>
+      <span class="logo-name">TELEGRAM</span>
+    </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+{% extends 'base.html' %} 
+{% block title %}
+  Login
+{% endblock %}
+{% block content %} 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <link rel="stylesheet" type="" href="signin.css">
+  <style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais')  ;
+    
+  }
+   /* container tag is aligment */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+/* image tag is alignment of login box tata picture */
+
+  .image{
+   align-items: center;
+    width: 40%;
+    height: auto;
+    float: right ;
+    bottom: 40%;
+    margin: 12%;
+    
+    
+    
+  transform: translate(-40%, -10%);  
+ 
+  }
+  
+  
+  /* login box alignment */
+
+  .login-box {
+    width: 350px;
+    background-image: url('https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais') ;
+    background-size: cover;
+    border-radius: 12px;
+    padding: 40px;
+    border: 1px solid;
+    box-shadow: 10 10 10px rgba(24, 185, 177, 0.1);
+    animation: backgroundAnimation 7s linear infinite;
+
+    
+  }
+  @keyframes backgroundAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+  }
+ 
+  
+  .login-box h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .textbox {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .textbox input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid #726d6d;
+    outline: none;
+    color: #084c83;
+    background-color: transparent;
+  }
+  
+  .textbox label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+  
+  .textbox input:focus ~ label,
+  .textbox input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #333;
+    font-size: 12px;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    background-color: #62cdff;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-style: normal;
+    font: bold;
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #1278cc;
+  }
+  
+  .signup-link {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* .signup-link a {
+    color: #333333;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .signup-link a:hover {
+    color: #0322d1;
+  }
+   */
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="login-box">
+        <img src="https://seeklogo.com/images/T/TATA-logo-B17191F4CA-seeklogo.com.png" alt="" class="image"> 
+      <form method="POST" class="form-register">
+
+        <div class="textbox">
+          <input class="form-control" id="username" name="username" placeholder="Mobile no." required="" type="text" value="">
+        </div>
+
+         <div class="textbox">
+          <input class="form-control" id="password" name="password" placeholder="Password" required="" type="password" value="">
+        </div>
+
+        <input class="btn btn-lg btn-block btn-primary" id="submit" name="submit" type="submit" value="Login">
+        <p class="signup-link">Don't have an account? <a href="{{url_for('register_page')}}" class="link"><b><i></i>Sign-up</b></a></p>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock %} 
+
+
+

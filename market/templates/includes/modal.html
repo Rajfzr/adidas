@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yes or No Modal</title>
+  <style>
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      width: 300px;
+      margin: 200px auto;
+      padding: 20px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .modal-buttons {
+      margin-top: 20px;
+    }
+
+    .modal-buttons button {
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #4caf50;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <button id="open-modal-btn">Open Modal</button>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2>Confirmation</h2>
+      <p>Are you sure?</p>
+      <div class="modal-buttons">
+        <button id="yes-btn">Yes</button>
+        <button id="no-btn">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("open-modal-btn").addEventListener("click", function() {
+      document.getElementById("modal").style.display = "block";
+    });
+
+    document.getElementById("yes-btn").addEventListener("click", function() {
+      // // Yes button action
+      document.getElementById("modal").style.display = "none";
+      // alert("You clicked Yes!");
+    });
+
+    document.getElementById("no-btn").addEventListener("click", function() {
+      // No button action
+      document.getElementById("modal").style.display = "none";
+      // alert("You clicked No!");
+    });
+  </script>
+</body>
+</html>

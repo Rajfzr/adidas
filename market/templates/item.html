@@ -1,0 +1,125 @@
+
+items = [
+{'id':1, 'name': 'phone', 'barcode':'788778788778', 'price':500},
+{'id':2, 'name': 'Laptop', 'barcode':'898998898998', 'price':900},
+{'id':3, 'name': 'Keyboard', 'barcode':'344343343434', 'price':150}
+]
+
+https://tse3.mm.bing.net/th?id=OIP.PTmSIJHKSCrO7NBnR7rwwAHaFk&pid=Api&P=0&h=180
+
+{% extends 'index.html' %}
+{% block title %} 
+   Market page
+{% endblock %}
+{% block content %}
+   <h1>Market page</h1>
+   <table class="table table-hover table-daek"> 
+      <thead>
+         <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Barcode</th>
+            <th scope="col">Price</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for item in items %} 
+         {% include 'includes/items_modals.html' %}
+         <tr>
+         <td>{{ item.id}}</td>
+         <td>{{ item.name }}</td>
+         <td>{{ item.barcode }}</td>
+         <td>{{ item.price }}</td>
+         <td>
+            <button class="btn btn-outline btn-info" data-bs-toggle="modal" data-bs-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
+            <button class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#Modal-Purchase-{{ item.id }}">Purchase</button>
+         </td>
+         </tr>
+         {% endfor %}
+      </tbody>
+   
+{% endblock %}
+"https://cdn.shopify.com/s/files/1/0347/0766/9123/products/81Sbks1_qJL._SL1500_1024x1024.jpg?v=1613628491"
+
+
+<div class="container" style="background-color: rgb(94, 116, 189); height: 100vh;">
+
+
+
+   @app.route('/register', methods=['GET', 'POST'])
+   def register_page():
+       form = RegisterForm()
+       if form.validate_on_submit():
+           referral_code=form.referral_code.data
+           link_id=generate_referral_code()
+           # Check if referral code exists in the database
+           referred_by = None
+           if referral_code:
+               referred_by_user = User.query.filter_by(referral_code=referral_code).first()
+               if referred_by_user:
+                   referred_by = referred_by_user.id
+   
+           # Add referral bonus to referred user's account
+           if referred_by:
+               referred_by_user.referred_bonus += 100
+               db.session.commit()
+   
+   
+   
+           user_to_create = User(username=form.username.data, email_address=form.email_address.data, password=form.password1.data, refer_code=link_id, referral_code=generate_referral_code(), referred_by=referred_by)
+           db.session.add(user_to_create)    
+           db.session.commit()
+           return redirect(url_for('login_page'))
+       if form.errors != {}:
+           for err_msg in form.errors.values():
+               flash(f'There was an error: {err_msg}', category='danger')     
+       return render_template('register.html', form=form)
+
+
+
+
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+       <nav class="navbar navbar-expand-lg bg-body-tertiary">
+           <div class="container-fluid">
+             <a class="navbar-brand" href="{{ url_for('register_page')}}">Home</a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+             </button>
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               {% if current_user.is_authenticated %}
+               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                 <li class="nav-item">
+                   <a class="nav-link active" aria-current="page" style="color: rgb(153, 85, 3);">
+                        <i class="fas fa-coins">Balance:{{ current_user.budget }}</i>
+                   </a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link active" aria-current="page" href="{{ url_for('logout_page') }}">Logout</a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link active" aria-current="page" href="{{ url_for('withdrawl_page') }}">Withdraw</a>
+                 </li>
+               </ul>
+               {% else %}
+                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                   <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="{{ url_for('register_page')}}">Register</a>
+                   </li>
+                   <li class="nav-item">
+                     <a class="nav-link active" aria-current="page" href="{{ url_for('login_page')}}">Login</a>
+                   </li>
+                 </ul>
+               {% endif %}
+         </nav>
+
+         if form.validate_on_submit():
+
+
+
+         total_referincome = sum(friend.recharge_amount for friend in frineds)*0.2
+         print("Total Budget:", total_referincome)
+
+
+         def update_referred_bonus(self, referred_bonus):
+         self.referred_bonus += referred_bonus
+         db.session.commit()
