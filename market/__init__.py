@@ -10,7 +10,7 @@ import secrets
 import os
 
 
-
+# kdmf
 app = Flask(__name__)
 # app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql://tatadb_user:JHUDOpY0em1PswBxEv7uYxKLZHilmQaB@dpg-cicfqfd9aq03rjn5173g-a.oregon-postgres.render.com:5432/tatadb'
 
