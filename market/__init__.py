@@ -18,7 +18,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql://ad_e8lb_user:45fE7dwCPw9Z
 # app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql://tatadb_user:JHUDOpY0em1PswBxEv7uYxKLZHilmQaB@dpg-cicfqfd9aq03rjn5173g-a.oregon-postgres.render.com:5432/tatadb (db connection)'
 
 
-app.secret_key = '34cf4c8bc7f9e40bdcc0d1281e282346ea276ecd54b01c8cc08732e445cd'
+app.secret_key = 'f99fc1fcecf0e4da478694b54cea0dcd77c2b31b2d6a6230'
 app.config['WTF_CSRF_ENABLED'] = False
 #'postgresql://tatadb_user:JHUDOpY0em1PswBxEv7uYxKLZHilmQaB@dpg-cicfqfd9aq03rjn5173g-a.oregon-postgres.render.com:5432/tatadb'
 
