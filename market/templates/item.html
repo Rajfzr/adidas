@@ -123,3 +123,208 @@ https://tse3.mm.bing.net/th?id=OIP.PTmSIJHKSCrO7NBnR7rwwAHaFk&pid=Api&P=0&h=180
          def update_referred_bonus(self, referred_bonus):
          self.referred_bonus += referred_bonus
          db.session.commit()
+
+
+
+
+
+<!-- {% extends 'base.html' %} 
+{% block title %}
+Invite
+{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>invite</title>
+  <style>
+    body{
+        background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+    }
+    .container {
+      text-align: center;
+      max-width: 800px;
+            margin: 0 auto;
+            margin-top: 10%;
+            padding:20px;
+            background-image: url(https://img.freepik.com/free-vector/abstract-soft-blue-watercolor-texture-design-background_1055-17600.jpg?size=626&ext=jpg&ga=GA1.1.41452981.1688201186&semt=ais);
+            background-size: contain;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+           
+            
+    }
+   .container2{text-align: center;
+      max-width: 800px;
+            margin: 0 auto;
+            margin-top: 10%;
+            padding:20px;
+            background-image: url(https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+            background-size: cover;
+            border: 1px solid rgb(0, 153, 255);
+            box-shadow: 0 0 20px rgba(6, 193, 250, 0.1);
+            border-radius: 20px;
+
+   }
+
+    .animation img {
+    max-width: 50%;
+    height: auto;
+}
+    
+    .animation {
+    width: 150px;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    animation: move 2s infinite alternate;
+}
+
+
+
+      
+    
+    
+    @keyframes move {
+      0% {
+        left: 0px;
+      }
+      100% {
+        left: 75px;
+      }
+    }
+    
+    table {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+      border-collapse: collapse;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    table.show {
+      opacity: 1;
+      transform: translateY(0);
+      border: 1px solid rgb(0, 217, 255);
+      border-left: 1px solid lightblue;
+    }
+    
+    th, td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #08bdeb;
+      border-left: 1px solid rgb(15, 247, 227);
+    }
+    
+    th {
+      background-color: #f2f2f2;
+    }
+    
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    h1,h2 {
+            text-align: center;
+            background: linear-gradient(to right,#00A8FF, #8C55AA);
+            -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+        .button{
+         background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+         background-size:50%;
+         border: 2px solid rgb(0, 0, 0);
+         border-radius: 7px;
+       
+        width: 15vh;
+        height: 30px;
+        color: white;
+         font-weight: bold;
+        }
+        .h{
+         border: 1px solid rgb(3, 168, 245);
+         margin-left: 40%;
+         margin-right: 40%;
+         align-items: center;
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="animation">
+        <img src="https://seeklogo.com/images/T/TATA-logo-B17191F4CA-seeklogo.com.png" alt="">
+    </div>
+    <h1>Tata Invitation Bonus</h1>
+    <div class="tab">
+      <b class="x"> Referral Link:</b>
+    <input type="text" id="referral-link" value="  {{ referral_link }}" readonly style="
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.39); border: 2px solid rgb(7, 218, 255);
+    "> 
+    <br>
+    
+    <button onclick="copyReferralLink()" class="button"><i>Copy Link</i></button> 
+    
+   <br><br><br><b>Referral Code:</b>
+    <input type="text" id="referral-code" value="{{ current_user.referral_code }}" readonly style=" padding: 12px;  border: 2px solid rgb(7, 218, 255) " >
+    <br>
+    
+    <button onclick="copyReferralCode()" class="button"><i>Copy Code</i></button>
+    <div></div>
+  </div>
+
+  <div class="container2">
+    
+    <h2><u style="color: rgb(13, 112, 204);">Income Details </u></h2>
+    
+    <table>
+      <tr>
+        <th>Level</th>
+        <th>Income</th>
+      </tr>
+      <tr class="fadeIn">
+        <td>Level 1</td>
+        <td>20%</td>
+      </tr>
+      <tr class="fadeIn">
+        <td>Level 2</td>
+        <td>3%</td>
+      </tr>
+      Add more rows as needed
+    </table>
+  </div>
+
+  <script>
+    function copyReferralLink() {
+      var referralLink = document.getElementById("referral-link");
+      referralLink.select();
+      document.execCommand("copy");
+      alert("Referral Link copied to clipboard!");
+    }
+    
+    function copyReferralCode() {
+      var referralCode = document.getElementById("referral-code");
+      referralCode.select();
+      document.execCommand("copy");
+      alert("Referral Code copied to clipboard!");
+    }
+    
+    window.addEventListener("DOMContentLoaded", function() {
+      var table = document.querySelector("table");
+      table.classList.add("show");
+    });
+  </script>
+</body>
+</html>
+{% endblock %} 
+{% include 'includes/icon.html' %} 

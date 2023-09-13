@@ -1,203 +1,207 @@
-{% extends 'base.html' %} 
-{% block title %}
-Invite
-{% endblock %}
-{% block content %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>invite</title>
-  <style>
-    body{
-        background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
-    }
-    .container {
-      text-align: center;
-      max-width: 800px;
-            margin: 0 auto;
-            margin-top: 10%;
-            padding:20px;
-            background-image: url(https://img.freepik.com/free-vector/abstract-soft-blue-watercolor-texture-design-background_1055-17600.jpg?size=626&ext=jpg&ga=GA1.1.41452981.1688201186&semt=ais);
-            background-size: contain;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-           
-            
-    }
-   .container2{text-align: center;
-      max-width: 800px;
-            margin: 0 auto;
-            margin-top: 10%;
-            padding:20px;
-            background-image: url(https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
-            background-size: cover;
-            border: 1px solid rgb(0, 153, 255);
-            box-shadow: 0 0 20px rgba(6, 193, 250, 0.1);
-            border-radius: 20px;
-
-   }
-
-    .animation img {
-    max-width: 50%;
-    height: auto;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Invitation Page</title>
+    <style>
+        /* Reset some default styles */
+ *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Microsoft YaHei , sans-serif;
     
-    .animation {
-    width: 150px;
-    height: auto;
-    position: relative;
-    margin: 0 auto;
-    overflow: hidden;
-    animation: move 2s infinite alternate;
+ }
+body, h1, h2 {
+    margin: 0;
+    padding: 0;
+    background-color: black; 
+}
+h1{ 
+    text-align: center;
 }
 
+/* Style the header and navigation bar */
+header {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 0;
+}
 
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
 
-      
+.left-corner button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: -14px;
+}
+
+.center-heading  {
+    font-size: 50px;
+     display: flex;
+     justify-content: center;
+   
+}
+
+/* Style the main content */
+main {
+    padding: 20px;
+}
+
+.invitation-box, .refer-code-box {
+    border: 2px solid #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    box-shadow: -1px 2px 8px #fff;
+}
+.Level-box{
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 30px;
+    margin-right: 30%;
+    background-color: black;
+    margin-left: 20%;
+    margin: 20px;
+    color: #fff;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: -1px 2px 8px #fff;
+
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.copy-box {
+    display: flex;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding:  0.8rem;;
+    border: none;
+    font-size: 18px;
+    color: #0592bd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: rgb(26, 144, 191);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Style the QR code */
+.qr-code {
+    text-align: center;
+    margin-top: 50px;
+    margin-left: -40px;
     
-    
-    @keyframes move {
-      0% {
-        left: 0px;
-      }
-      100% {
-        left: 75px;
-      }
+}
+
+.qr-code img{
+    box-shadow: -1px 2px 8px #fff;
+    border-radius: 10px;
+}
+/* Media query for smartphone displays */
+@media screen and (max-width: 768px) {
+    .center-heading h1 {
+        font-size: 20px;
     }
-    
-    table {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      width: 100%;
-      border-collapse: collapse;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+    .invitation-box, .refer-code-box {
+        padding: 10px;
     }
-    
-    table.show {
-      opacity: 1;
-      transform: translateY(0);
-      border: 1px solid rgb(0, 217, 255);
-      border-left: 1px solid lightblue;
+    h2 {
+        font-size: 18px;
     }
-    
-    th, td {
-      padding: 8px;
-      text-align: center;
-      border-bottom: 1px solid #08bdeb;
-      border-left: 1px solid rgb(15, 247, 227);
-    }
-    
-    th {
-      background-color: #f2f2f2;
-    }
-    
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    h1,h2 {
-            text-align: center;
-            background: linear-gradient(to right,#00A8FF, #8C55AA);
-            -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-            margin-bottom: 30px;
-        }
-        .button{
-         background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
-         background-size:50%;
-         border: 2px solid rgb(0, 0, 0);
-         border-radius: 7px;
-       
-        width: 15vh;
-        height: 30px;
-        color: white;
-         font-weight: bold;
-        }
-        .h{
-         border: 1px solid rgb(3, 168, 245);
-         margin-left: 40%;
-         margin-right: 40%;
-         align-items: center;
-        }
-  </style>
+}
+
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="animation">
-        <img src="https://seeklogo.com/images/T/TATA-logo-B17191F4CA-seeklogo.com.png" alt="">
-    </div>
-    <h1>Tata Invitation Bonus</h1>
-    <div class="tab">
-      <b class="x"> Referral Link:</b>
-    <input type="text" id="referral-link" value="  {{ referral_link }}" readonly style="
-    padding: 12px;
-    background-color: rgba(255, 255, 255, 0.39); border: 2px solid rgb(7, 218, 255);
-    "> 
-    <br>
-    
-    <button onclick="copyReferralLink()" class="button"><i>Copy Link</i></button> 
-    
-   <br><br><br><b>Referral Code:</b>
-    <input type="text" id="referral-code" value="{{ current_user.referral_code }}" readonly style=" padding: 12px;  border: 2px solid rgb(7, 218, 255) " >
-    <br>
-    
-    <button onclick="copyReferralCode()" class="button"><i>Copy Code</i></button>
-    <div></div>
-  </div>
+    <header>
+        <nav>
+            <div class="left-corner">
+                <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-lg"></i></button>
+            </div>
+            <div class="center-heading">
+               
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="invitation-box">
+            <h2>Invitation Link</h2>
+            <div class="copy-box">
+                <input type="text" id="invitationLink" placeholder="invitation link" >
+                <button id="copyButton">Copy</button>
+                
+            </div><br>
+        </div>
+        <div class="refer-code-box">
+            <h2>Refer Code</h2>
+            <div class="copy-box">
+                <input type="text" id="referCode" placeholder="Refer code">
+                <button id="copyReferCodeButton">Copy</button>
+            </div><br>
+        </div>
 
-  <div class="container2">
-    
-    <h2><u style="color: rgb(13, 112, 204);">Income Details </u></h2>
-    
-    <table>
-      <tr>
-        <th>Level</th>
-        <th>Income</th>
-      </tr>
-      <tr class="fadeIn">
-        <td>Level 1</td>
-        <td>20%</td>
-      </tr>
-      <tr class="fadeIn">
-        <td>Level 2</td>
-        <td>3%</td>
-      </tr>
-      <!-- Add more rows as needed -->
-    </table>
-  </div>
-
-  <script>
-    function copyReferralLink() {
-      var referralLink = document.getElementById("referral-link");
-      referralLink.select();
-      document.execCommand("copy");
-      alert("Referral Link copied to clipboard!");
-    }
-    
-    function copyReferralCode() {
-      var referralCode = document.getElementById("referral-code");
-      referralCode.select();
-      document.execCommand("copy");
-      alert("Referral Code copied to clipboard!");
-    }
-    
-    window.addEventListener("DOMContentLoaded", function() {
-      var table = document.querySelector("table");
-      table.classList.add("show");
-    });
-  </script>
+        <div class="Level-box">
+            <h2>Invitation Reward</h2><br>
+            
+                <p><b>Level 1 = 20%</b></p><br>
+                <p><b>Level 2 = 3%</b></p><br>
+                <p><b>Level 3 = 2%</b></p>
+            </div>
+        </div>
+        <div class="qr-code">
+            <!-- QR Code image goes here -->
+           <img src="https://tse2.mm.bing.net/th?id=OIP.-9N4K3Syg-OgbET8dgDwqAHaHa&pid=Api&P=0&h=180" alt="">
+        </div>
+    </main>
+    <script>// Your JavaScript code for copying text goes here
+        document.getElementById("copyButton").addEventListener("click", function() {
+            var copyText = document.getElementById("invitationLink");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Copied: " + copyText.value);
+        });
+        
+        document.getElementById("copyReferCodeButton").addEventListener("click", function() {
+            var copyText = document.getElementById("referCode");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Copied: " + copyText.value);
+        });
+        </script>
 </body>
 </html>
-{% endblock %} 
-{% include 'includes/icon.html' %}
+
+
+
+
+
 
 
 

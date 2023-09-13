@@ -1,15 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+*{
+ 
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Microsoft YaHei , sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    
+    color: white;
+    background-color: #000;
+  }
+  
+  /* .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    text-align: center;
+    z-index: 2;
+  }
 
   
-     
-<<<<<<< Updated upstream
-      
-=======
+  
+  .popup h2 {
+    margin: 0;
+  }
+   */
+   .popup-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+  }
+  
+  .popup {
+    background-color:rgb(51 57 58 / 80%);;
+    /* background:blue; */
+    border-radius: 5px;
+    padding: 30px;
+    /* text-align: center; */
+    position: relative;
+    max-width: 80%;
+    overflow: auto;
+    animation: slide-up 0.5s;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    
+  }
 
->>>>>>> Stashed changes
-               
+  
 
+  span{
+  font-size: 25px;
+  }
+  
+  .popup-heading {
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  .popup-content {
+    margin: 20px 0;
+  }
+  
+  .popup-btn {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    
+  }
+
+  #okBtn{
+    margin-left: 80%;
+    background-color: #0592bd;
+  }
+  
+  #okBtn:hover{
+    background-color: #0592bd;
+  }
+
+  
+  @media (max-width: 600px) {
+    .popup {
+      max-width: 95%;
+    }
+  }
+  
+  @keyframes slide-up {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  .main {
+    padding: 20px;
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .logo {
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .slide-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .smartphone-interface {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+   
+  }
+  
+  .smartphone-interface img {
+    width: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    /* max-width: 200px;
+    margin-bottom: 10px; */
+  }
+  
+  .smartphone-interface h2 {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .grid-box {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .start-button {
+    background-color: #0592bd;
+    color: white;
+    border: none;
+    padding: 10px 118px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+
+
+  .start-button:hover {
+    background-color: #057ab1;
+  }
+  
+  .start-button2 {
+    background-color: rgb(216, 209, 209);
+    color: black;
+    border: none;
+    padding: 10px 120px;
+    border-radius: 5px;
+    
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #222;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  
+  .fixed-logo {
+    color: white;
+  }
+  
+  .circle-logo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    border-radius: 50%;
+  }
+  
  
-      <!DOCTYPE html>
+  
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Mainpage</title>
+</head>
+<body>
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup">
+          <span class="close-btn" id="closeBtn"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i></span>
+          <h1 class="popup-heading">Notice</h1>
+          <div class="popup-content">
+            <p style="font-size: 15px;"><span>A</span>didas aims to buid the most  stable and profitable long term app in the indian market</p><hr>
+            <p>Minimum Recharge : &#8377;500</p>
+            <p>Minimum Withdrawl : &#8377;150</p>
+            <p>Daily Income time : 00:00</p>
+            
+            <p>Withdrawal time : 03:00-17:30</p><br>
+            <p style="font-size: 15px;">All plans, Daily income, Daily withdrawal</p><hr>
+            
+          </div>
+          <button class="popup-btn" id="okBtn">OK</button>
+        </div>
+      </div>
+  <div class="main">
+    <div style="text-align: center;">
+    <img src="https://tse4.mm.bing.net/th?id=OIP.sd-16IvIATWaIGOn3anyiwHaEK&pid=Api&P=0&h=180" alt="Company" style="width: 60%; margin-top: 10px;">
+    </div>
+     <!-- s -->
+     <div>
+      <nav class="bottom-nav" style="position: relative; margin-top:10px ; ">
+          <a href="{{ url_for('market_page')}}" class="nav-item">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+            <span class="logo-name">RECHARGE</span>
+          </a>
+          <a href="{{ url_for('referrals', referral_code = current_user.referral_code) }}" class="nav-item">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <span class="logo-name">WITHDRAWAL</span>
+          </a>
+          <a href="{{url_for('team')}}" class="nav-item">
+            <i class="fa-solid fa-user-clock"></i>
+            <span class="logo-name">ONLINE</span>
+          </a>
+          <a href="https://t.me/tatacustmerservice" class="nav-item">
+              <i class="fa-brands fa-telegram"></i>
+            <span class="logo-name">TELEGRAM</span>
+          </a>
+      </div>
+     <!-- s -->
+    <!-- <div class="logo-container">
+     <a href="https://google.com">CHANNEL</a>
+     <a href="">WITHRAWAL</a>
+     <a href="">RECHARGE</a>
+     <a href="">TELEGRAM</a>
+    </div> -->
+    
+    <div class="smartphone-interface">
+      <img src="shoes.img.jpg" alt="Smartphone" style="text-align: center;">
+      <h2>Plan A</h2>
+      <p>Daily income, daily withdrawal</p>
+      <div class="grid-container">
+        <div class="grid-box">Trading Price:1000</div>
+        <div class="grid-box">Daily Income:1000</div>
+        <div class="grid-box">Revenue Cycle:100</div>
+        <div class="grid-box">Total Income:100000</div>
+      </div>
+      <button class="start-button">Buy now</button>
+    </div>
+    <!-- Repeat the smartphone interface section for the other boxes -->
+  
+  <!-- 2 -->
+  <div class="smartphone-interface" >
+    <img src="fachry-zella-devandra-bNSdIkCBJOs-unsplash.jpg" alt="Smartphone" style="text-align: center; ">
+    <h2>Plan B</h2>
+    <p>Daily income, daily withdrawal</p>
+    <div class="grid-container">
+      <div class="grid-box">Trading Price:1000</div>
+      <div class="grid-box">Daily Income:1000</div>
+      <div class="grid-box">Revenue Cycle:100</div>
+      <div class="grid-box">Total Income:100000</div>
+    </div>
+    <button class="start-button">Buy now</button>
+  </div>
+  <!-- Repeat the smartphone interface section for the other boxes -->
+
+
+<!-- 3 -->
+<div class="smartphone-interface" >
+  <img src="grailify-EUoTj2yI5LU-unsplash.jpg" alt="Smartphone" style="text-align: center; ">
+  <h2>Plan C</h2>
+  <p>Daily income, daily withdrawal</p>
+  <div class="grid-container">
+    <div class="grid-box">Trading Price:1000</div>
+    <div class="grid-box">Daily Income:1000</div>
+    <div class="grid-box">Revenue Cycle:100</div>
+    <div class="grid-box">Total Income:100000</div>
+  </div>
+  <button class="start-button2">Pre-sale</button>
+</div>
+<!-- Repeat the smartphone interface section for the other boxes -->
+
+<!-- 4 -->
+<div class="smartphone-interface" >
+  <img src="wp2671872.jpg" alt="Smartphone" style="text-align: center; ">
+  <h2>Plan D</h2>
+  <p>Daily income, daily withdrawal</p>
+  <div class="grid-container">
+    <div class="grid-box">Trading Price:1000</div>
+    <div class="grid-box">Daily Income:1000</div>
+    <div class="grid-box">Revenue Cycle:100</div>
+    <div class="grid-box">Total Income:100000</div>
+  </div>
+  <button class="start-button2">Pre-sale</button>
+</div>
+<!-- Repeat the smartphone interface section for the other boxes -->
+
+<!-- 5 -->
+<div class="smartphone-interface" >
+  <img src="pexels-terrance-barksdale-11820507.jpg" alt="Smartphone" style="text-align: center; ">
+  <h2>Plan E</h2>
+  <p>Daily income, daily withdrawal</p>
+  <div class="grid-container">
+    <div class="grid-box">Trading Price:1000</div>
+    <div class="grid-box">Daily Income:1000</div>
+    <div class="grid-box">Revenue Cycle:100</div>
+    <div class="grid-box">Total Income:100000</div>
+  </div>
+  <button class="start-button2">Pre-sale</button>
+</div>
+<!-- Repeat the smartphone interface section for the other boxes -->
+
+<!-- 6 -->
+<div class="smartphone-interface" >
+  <img src="nik-ctDjTTSbtmI-unsplash.jpg" alt="Smartphone" style="text-align: center; ">
+  <h2>Plan F</h2>
+  <p>Daily income, daily withdrawal</p>
+  <div class="grid-container">
+    <div class="grid-box">Trading Price:1000</div>
+    <div class="grid-box">Daily Income:1000</div>
+    <div class="grid-box">Revenue Cycle:100</div>
+    <div class="grid-box">Total Income:100000</div>
+  </div>
+  <button class="start-button2">Pre-sale</button>
+</div>
+<!-- Repeat the smartphone interface section for the other boxes -->
+
+<!-- 7 -->
+<div class="smartphone-interface" >
+  <img src="pexels-ray-piedra-1468412.jpg" alt="Smartphone" style="text-align: center; ">
+  <h2>Plan G</h2>
+  <p>Daily income, daily withdrawal</p>
+  <div class="grid-container">
+    <div class="grid-box">Trading Price:1000</div>
+    <div class="grid-box">Daily Income:1000</div>
+    <div class="grid-box">Revenue Cycle:100</div>
+    <div class="grid-box">Total Income:100000</div>
+  </div>
+  <button class="start-button2">Pre-sale</button>
+</div>
+<!-- Repeat the smartphone interface section for the other boxes -->
+
+<!-- 8 -->
+<div class="smartphone-interface" >
+  <img src="edgar-chaparro-Lh-CTP558tc-unsplash.jpg" alt="Smartphone" style="text-align: center; ">
+  <h2>Plan H</h2>
+  <p>Daily income, daily withdrawal</p>
+  <div class="grid-container">
+    <div class="grid-box">Trading Price:1000</div>
+    <div class="grid-box">Daily Income:1000</div>
+    <div class="grid-box">Revenue Cycle:100</div>
+    <div class="grid-box">Total Income:100000</div>
+  </div>
+  <button class="start-button2">Pre-sale</button>
+</div>
+<br>
+<br>
+<br>
+<!-- Repeat the smartphone interface section for the other boxes -->
+</div>
+  <!-- <div class="footer">
+    <div class="fixed-logo">Home</div>
+    <div class="fixed-logo">Invite</div>
+    <div class="fixed-logo">Team</div>
+    <div class="fixed-logo">Mine</div>
+  </div> -->
+  <!-- <div class="circle-logo"></div> -->
+  <script>
+    const popupOverlay = document.getElementById("popupOverlay");
+const closeBtn = document.getElementById("closeBtn");
+const okBtn = document.getElementById("okBtn");
+
+function openPopup() {
+  popupOverlay.style.visibility = "visible";
+  popupOverlay.style.opacity = 1;
+}
+
+function closePopup() {
+  popupOverlay.style.visibility = "hidden";
+  popupOverlay.style.opacity = 0;
+}
+
+closeBtn.addEventListener("click", closePopup);
+okBtn.addEventListener("click", closePopup);
+
+window.onload = openPopup;
+
+
+  </script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+      /* fixed nav baar css */
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px;
+      }
+      
+      .nav-item {
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+      }
+      
+      .nav-item:hover {
+        color: #0bc9e2;
+      }
+      
+      .logo {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 5px;
+      }
+      
+      .logo-name {
+        margin-top: 5px;
+        font-size: 10px;
+      }
+
+
+      
+    
+      
+     
+  </style>
+</head>
+<body>
+<!-- fixed nav baar -->
+<div>
+<nav class="bottom-nav">
+    <a href="{{ url_for('market_page')}}" class="nav-item">
+        <i class="fa-solid fa-house"></i>
+      <span class="logo-name">HOME</span>
+    </a>
+    <a href="{{ url_for('referrals', referral_code = current_user.referral_code) }}" class="nav-item">
+        <i class="fa-solid fa-user-plus"></i>
+      <span class="logo-name">INVITE</span>
+    </a>
+    <a href="{{url_for('team')}}" class="nav-item">
+        <i class="fa-solid fa-people-group"></i>
+      <span class="logo-name">TEAM</span>
+    </a>
+    <a href="https://t.me/tatacustmerservice" class="nav-item">
+      <i class="fa-solid fa-user"></i>
+      <span class="logo-name">MY</span>
+    </a>
+</div>
+</body>
+</html>
+  
+  <!-- <!DOCTYPE html>
       <html lang="en">
       <head>
           
@@ -371,7 +897,7 @@
 
              <!-- <button class="btn btn-outline btn-success" id="open-modal-btn">Buy</button> -->
 
-             <form method="POST">
+             <!-- <form method="POST">
               {{ purchase_form.hidden_tag() }}
               <input id="purchased_item" name="purchased_item" type="hidden" value="{{item.name}}">
               {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}
@@ -693,7 +1219,7 @@
 
              
              
-              <input id="purchased_item" name="purchased_item" type="hidden" value="{{tom.name}}">
+              <!-- <input id="purchased_item" name="purchased_item" type="hidden" value="{{tom.name}}">
               <input class="btn btn-outline-success btn-block" id="submit" name="submit" type="submit" value="Pre-sale" style="background-color: #ccc;">
         
             
@@ -703,25 +1229,4 @@
       </body>
       </html>
         {% endfor %}
-        
-         <nav class="bottom-nav">
-          <a href="{{ url_for('market_page')}}" class="nav-item">
-              <i class="fa-solid fa-house"></i>
-            <span class="logo-name">HOME</span>
-          </a>
-          <a href="{{ url_for('referrals', referral_code = current_user.referral_code) }}" class="nav-item">
-              <i class="fa-solid fa-user-plus"></i>
-            <span class="logo-name">INVITE</span>
-          </a>
-          <a href="{{ url_for('team')}}" class="nav-item">
-              <i class="fa-solid fa-people-group"></i>
-            <span class="logo-name">TEAM</span>
-          </a>
-          <a href="https://t.me/tatacustmerservice" class="nav-item">
-              <i class="fa-brands fa-telegram"></i>
-            <span class="logo-name">TELEGRAM</span>
-          </a>
-      </div>
-
-
 
