@@ -1,4 +1,347 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Microsoft YaHei , sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            
+           
+            background-color: black;
+            
+        }
+
+        .header {
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            margin-top: -225px;
+            padding: 10px;
+            position: absolute ;
+         
+        }
+
+        .header h1 {
+          margin-top: 180px;
+          margin-left: 10px;
+           
+        }
+
+        .back-button {
+            position: absolute;
+            
+          
+            
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        img{
+           margin-top: -3px;
+           
+            
+        }
+
+        .container {
+            
+            padding: 10px;
+            background-color: black;
+            text-align: center;
+            margin-bottom: 10px;
+            box-shadow: -1px 2px 8px #fff;
+        }
+
+        .form-input {
+            width: 80%;
+            padding: 10px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            
+        }
+
+        .input-icon img {
+          width: 25px;
+          margin-right: 12px;
+            }
+
+        .register-button {
+            width: 80%;
+            padding: 10px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #0592bd;
+            color: white;
+            
+        }
+
+        .register-button:hover{
+            background-color: #08e7e7;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.589);
+        }
+
+         .buttons button{
+            border-radius: 20px;
+            margin:px;
+
+            box-shadow: -1px 5px 15px 0 #0b7b9d;
+         }
+
+         /* input boxes and button in box  */
+
+         .box[data-v-c38e8882] {
+            margin: 0 0.666667rem;
+            position: relative;
+            z-index: 999;
+            border-radius: 0.266667rem;
+             padding: 0.4rem;
+            padding-top: 0.666667rem;
+             margin-top: 0.266667rem;
+         }
+         
+         ul, li{
+            padding: 0;
+            margin-top: 0.5rem;
+         }
+
+         .box ul li[data-v-c38e8882] {
+            overflow: hidden;
+    position: relative;
+    padding-bottom: 0.066667rem;
+    margin: 0.266667rem;
+} 
+.box ul li .lco[data-v-c38e8882] {
+    width: 0.666667rem;
+    position: absolute;
+    right: 0.4rem;
+    top: 0.293333rem;
+}
+img {
+    vertical-align: middle;
+    
+}
+.box ul li input[data-v-c38e8882] {
+    float: left;
+    width: 100%;
+    height: 3.066667rem;
+    border-radius: 5px;
+    padding: 0 0.8rem;
+    font-size: 18px;
+    background-color: #cfcccc;
+}
+
+button, input, select {
+    outline-style: none;
+    border: 0;
+}
+
+
+.box ul li[data-v-c38e8882] {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 0.066667rem;
+    margin: 0.266667rem;
+}
+
+#icon{
+    margin-top: 10px;
+    width: 35px;
+}
+
+button[data-v-c38e8882] {
+    width: 98%;
+    background: #0592bd;
+    box-shadow: -1px 5px 15px 0 #0592bd;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+input[type="submit"]{
+  width: 99%;
+  height: 42px;
+  border-radius: 9px;
+  
+  font-size: 20px;
+    background: #0592bd;
+    box-shadow: -1px 5px 15px 0 #0592bd;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    
+    margin: 5px;
+    margin-top: 35px;
+}
+
+        .login-link {
+            color: rgb(9, 197, 225);
+            text-decoration:none ;
+        }
+        
+        
+
+        @media (max-width: 600px) {
+            /* Smartphone interface styles */
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .back-button {
+                left: 7px;
+               
+            }
+
+            .container {
+                
+                margin: 10px;
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            
+
+        }
+
+        .flash-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            text-align: center;
+            display: none;
+        }
+
+        .flash-message.show {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    
+    
+    <div class="img" style="text-align: center;">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.kdTCqxiG8nbB5BeGdf-yqwHaEK&pid=Api&P=0&h=180" alt="" style="width: 100%;">
+       </div>
+       <div class="header">
+       
+        <h1 >Register</h1>
+        
+    </div>
+    <div class="container">
+        <br>
+        <form method="POST" class="form-register">
+             <div data-v-c38e8882="" class="box" style="margin-top:0rem"><!--<div style="color:#fff;width:100%;">--><!--     <p style="float:left; width:100%; font-size:0.2rem; margin-bottom: 50px; color: #3333ff;text-align:center;">Get the most out of your health and asset plans with easier access to tools and support.</p>--><!-- <p style="float:left;width:60%;font-size:0.3rem; line-height:1rem;"><a href="https://www.apple-technology.in/app.apk"><font color="#fff"></font><span style="color:#fff;width:100%">Android APP/iOS APP</span></font></a></p> --><!--</div>--><ul data-v-c38e8882="" style="clear: both;margin-top:0.5rem;">
+             <li data-v-c38e8882="">
+                <!-- <img data-v-c38e8882="" src="phonelogo.png" alt="" class="lco" id="icon"> -->
+                
+
+
+                <input data-v-c38e8882="" type="text" name="username" placeholder="Phone number" id="username" minlength="3" maxlength="30" required="" value="" >
+                </li>
+                <br>
+                <li data-v-c38e8882="">
+                               
+                  <input data-v-c38e8882="" type="text" id="email_address" name="email_address" placeholder=" Email" required="" value="">
+                  <img data-v-c38e8882="" src="download.png" alt="" class="lco" id="icon">
+                
+                </li>
+                 
+                    </ul><br>
+                    <ul data-v-c38e8882="" style="clear: both;margin-top:0.5rem;">
+                        <li data-v-c38e8882="">
+                           <input data-v-c38e8882="" type="password" minlength="6" id="password1" name="password1" placeholder="Confirm password" required="" value="">
+                           <img data-v-c38e8882="" src="download.png" alt="" class="lco" id="icon">
+                           </li>
+                           <br>
+                           <li data-v-c38e8882="">
+                            <input data-v-c38e8882="" type="password" id="password2" name="password2" required="" placeholder="Enter password"  value="">
+                            <img data-v-c38e8882="" src="download.png" alt="" class="lco" id="icon">
+                           </li><br>
+                           <li data-v-c38e8882="">
+                            <!-- <img data-v-c38e8882="" src="keylogo.png" alt="" class="lco" id="icon"> -->
+                            <input data-v-c38e8882="" type="text" name="referral_code" id="referral_code" placeholder="invitation code" value="{{request.args.get('referral_code')}}">
+                                              
+                   <input class="btn btn-lg btn-block btn-primary" id="submit" name="submit" type="submit" value="Signup">
+                        </li>
+                               </ul>
+
+                    
+                      <button data-v-c38e8882="" onclick="window.location.href=`/index/user/register`" style="/* padding: 0px; */font-size: 20px;border-radius: .533rem;margin-top: 20px;"><a href="{{ url_for('login_page')}}" class="nav-link">Login</a></button>
+                      <button data-v-c38e8882="" onclick="window.location.href=`https://www.ojbkuud-qqw3.com/app.apk`" style="width:95%;font-size: 20px;border-radius: .533rem;margin-top: 20px;display:none">download app</button>
+                      </div>
+                      <div data-v-c38e8882="" style="
+            margin-top: 5px;
+        /* "><div data-v-c38e8882="" class="col-xs-4" onclick="window.location.href=`/index/user/forget`" style="padding: 0px;float: right;"><p data-v-c38e8882="" style="color:#000;display: none;">Forget password?</p></div><div data-v-c38e8882="" class="col-xs-4" onclick="window.location.href=`/index/user/register`" style="padding: 0px;"><p data-v-c38e8882="" style="color:#000;display: none;">Register</p></div></div></div>
+
+                    </form>
+        
+           
+
+             <!-- <div class="buttons">
+            <button type="submit" class="register-button">Login</button>
+            <button type="submit" class="register-button">Register</button>
+            </div>
+        </form> */ -->
+
+        
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+  <div class="flash-message" id="flash-message">
+      {{ message }}
+  </div>
+      {% endfor %} 
+    {% endif %}  
+  {% endwith %}  
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var flashMessage = document.getElementById('flash-message');
+          flashMessage.classList.add('show');
+
+          setTimeout(function() {
+              flashMessage.classList.remove('show');
+          }, 3000);
+      });
+  </script>
+       
+    </div>
+    <br>
+    <br>
+    <br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- {% extends 'base.html' %}
 {% block title %}
     Signup
 {% endblock %}
@@ -178,4 +521,4 @@ button:hover {
 </body>
 </html>
 
-{% endblock %}
+{% endblock %} -->
