@@ -121,6 +121,9 @@ def income_page():
 def icon_page():
     return render_template('icon.html')
 
+@app.route('/my')
+def my():
+    return render_template('my.html')
 
 @app.route('/referrals/<referral_code>')
 @login_required

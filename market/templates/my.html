@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Styles for the layout */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Microsoft YaHei , sans-serif;
+        }
+        body {
+            
+            color: white;
+            background-color: #000;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            /* Add your logo styles here */
+            margin-top: 20px;
+        }
+        .logo img{
+            margin-top: 10px;
+            width: 80%;
+            height: auto;
+        }
+        .id {
+            font-size: 24px;
+            margin-top: 1px;
+            border: 1px solid white;
+        }
+
+        .id span{
+            font-size: 20px;
+             color: #007bff;
+          
+        }
+
+        .header-row {
+            background-color: white;
+            height: 40px;
+            margin-top: 20px;
+        }
+
+        .border-box {
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .left, .center, .right {
+            flex: 2;
+            background: #222222;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            border: 1.5px solid #fff;
+            
+        }
+
+        .right:hover{
+            background: #08b1ff88;
+        }
+
+        .left:hover{
+            background: #08b1ff88;
+        }
+
+        .center:hover{
+            background: #08c5ff88;
+        }
+
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            
+            
+        }
+
+        .button-container:hover{
+            color: #0bc9e2;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 35px;
+            background: #333; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            gap: 111px;
+            margin-top: 29px;
+            width: 307%;
+            font-size: 15px;
+        }
+
+        button:hover{
+            
+            background: #0592bd;
+        }
+
+        /* Media query for smartphones */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
+        }
+
+        /* popup notification property */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1;}
+
+           .popup-content{
+            width: 300px;
+            margin: 100px auto;
+            background: #000000;
+            padding: 20px;
+            box-shadow: 0px 0px 7px 8px #2b2a2a;
+            text-align: center ;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+           }
+
+           #yes-button,#no-button{
+            margin: 10px;
+            margin-right: 10px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+           }
+
+           #yes-button{
+            background-color: #fff;
+            color: black;
+            
+           }
+
+
+           .span2{
+                 margin: 30px;
+                 display: flex;
+                 justify-content: space-between;
+           }
+
+        
+  
+        
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <!-- Company logo here -->
+            <img src="adidas.jpg" alt="Company Logo">
+        </div>
+        <div class="id">
+            ID : 7986729128 <span><sup>VIP0</sup></span>
+        </div>
+        
+        <div class="border-box">
+            <div class="left">
+                Balance <br>50.00
+            </div>
+            <div class="center">
+                Recharge <br>00.00
+            </div>
+            <div class="right">
+                Income <br> 00.00
+            </div>
+        </div>
+        <div class="button-container">
+            <button><i class="fa-solid fa-money-bill-transfer fa-lg"></i> Withdrawal</button>
+            <button><i class="fa-solid fa-indian-rupee-sign fa-xl"></i>&nbsp; Recharge</button>
+            <button><i class="fa-solid fa-calendar-days fa-xl"></i> My Plans</button>
+            <button><i class="fa-solid fa-file fa-xl"></i> &nbsp;Funds Records</button>
+            <button><i class="fa-solid fa-info fa-xl"></i>&nbsp;&nbsp;Information</button>
+            <button><i class="fa-solid fa-gear fa-xl"></i>Bank Settings</button>
+           
+            <button onclick="showPopup()"><i class="fa-solid fa-arrow-right-to-bracket fa-rotate-180 fa-xl"></i>Sign out</button>
+            
+        </div>
+        <div class="popup" id="popup">
+            <div class="popup-content">
+                <h3>Are you sure  to Sign Out</h3>
+                <span class="span2">
+                    <button id="no-button" onclick="closePopup()">No</button>
+               
+                    <button id="yes-button" onclick="redirectToNextPage()">Yes</button>
+                </span>
+               
+               
+                
+            </div>
+        </div>
+    </div>
+    <br>
+    <br><br>
+    <script>
+        // JavaScript code can be added here if needed
+        function showPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+        function redirectToNextPage() {
+            // Add code to navigate to the next page here
+        }
+        function redirectToNextPage() {
+    // Navigate to the next page (replace 'next_page.html' with your actual page URL)
+    window.location.href = 'next_page.html';
+}
+
+    </script>
+</body>
+</html>
