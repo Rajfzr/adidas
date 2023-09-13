@@ -154,7 +154,7 @@ button {
         <div class="invitation-box">
             <h2>Invitation Link</h2>
             <div class="copy-box">
-                <input type="text" id="invitationLink" placeholder="invitation link" >
+                <input type="text" id="invitationLink" placeholder="invitation link"  id="referral-link" value="  {{ referral_link }}" readonly>
                 <button id="copyButton">Copy</button>
                 
             </div><br>
@@ -162,7 +162,7 @@ button {
         <div class="refer-code-box">
             <h2>Refer Code</h2>
             <div class="copy-box">
-                <input type="text" id="referCode" placeholder="Refer code">
+                <input type="text" id="referCode" placeholder="Refer code" value="{{ current_user.referral_code }}" readonly>
                 <button id="copyReferCodeButton">Copy</button>
             </div><br>
         </div>
