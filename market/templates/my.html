@@ -116,6 +116,13 @@
             background: #0592bd;
         }
 
+
+        a{
+            text-decoration: none;
+            color: white;
+            margin-left: -11%;
+        }
+
         /* Media query for smartphones */
         @media (max-width: 768px) {
             .container {
@@ -206,7 +213,7 @@
             <button><i class="fa-solid fa-indian-rupee-sign fa-xl"></i>&nbsp; Recharge</button>
             <button><i class="fa-solid fa-calendar-days fa-xl"></i> My Plans</button>
             <button><i class="fa-solid fa-file fa-xl"></i> &nbsp;Funds Records</button>
-            <button><i class="fa-solid fa-info fa-xl"></i>&nbsp;&nbsp;Information</button>
+            <button><i class="fa-solid fa-info fa-xl"></i>&nbsp;&nbsp;<a href="{{url_for('company')}}">Information</a></button>
             <button><i class="fa-solid fa-gear fa-xl"></i>Bank Settings</button>
            
             <button onclick="showPopup()"><i class="fa-solid fa-arrow-right-to-bracket fa-rotate-180 fa-xl"></i>Sign out</button>
