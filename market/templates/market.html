@@ -337,7 +337,7 @@ body {
           <span class="close-btn" id="closeBtn"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i></span>
           <h1 class="popup-heading">Notice</h1>
           <div class="popup-content">
-            <p style="font-size: 15px;"><span>A</span>didas aims to buid the most  stable and profitable long term app in the indian market</p><hr>
+            <p style="font-size: 15px;"><span>A</span>didas aims to build the most  stable and profitable long term app in the indian market</p><hr>
             <p>Minimum Recharge : &#8377;500</p>
             <p>Minimum Withdrawl : &#8377;150</p>
             <p>Daily Income time : 00:00</p>
@@ -393,24 +393,27 @@ body {
         <div class="grid-box">Total Income:100000</div>
       </div>
       <button class="start-button" onclick="showPopup()">Buy now</button>
+
+
+      <div class="popup1" id="popup1">
+        <div class="popup-content1">
+            <h3>Are you sure to buy this plan</h3>
+            <span class="span2">
+                <button id="no-button" onclick="closePopup()">No</button>
+          <form method="POST">
+              <input id="purchased_item" name="purchased_item" type="hidden" value="PLAN A">
+              <input class="" id="submit" name="submit" type="submit" value="Yes">
+            </form>
+            </span>
+           
+           
+            
+        </div>
+    </div>
     </div>
 
 
-    <div class="popup1" id="popup1">
-      <div class="popup-content1">
-          <h3>Are you sure to buy this plan</h3>
-          <span class="span2">
-              <button id="no-button" onclick="closePopup()">No</button>
-        <form method="POST">
-            <input id="purchased_item" name="purchased_item" type="hidden" value="PLAN A">
-            <input class="" id="submit" name="submit" type="submit" value="Yes">
-          </form>
-          </span>
-         
-         
-          
-      </div>
-  </div>
+
     {% endfor %}
     <!-- Repeat the smartphone interface section for the other boxes -->
   
