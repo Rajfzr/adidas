@@ -148,7 +148,8 @@
             z-index: 1;}
 
            .popup-content{
-            width: 300px;
+            height: 450px;
+            width: 403px;
             margin: 100px auto;
             background: #000000;
             padding: 20px;
@@ -165,12 +166,15 @@
             padding: 10px 20px;
             border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 33px;
+            width: 39%;
            }
 
            #yes-button{
             background-color: #fff;
             color: black;
+            width: 96%;
+            height: 75%;
             
            }
 
@@ -181,9 +185,16 @@
                  justify-content: space-between;
            }
 
+
+           a{
+            text-decoration: none;
+            color: white;
+           }
         
   
-        
+          h3{
+            font-size: 33px;
+          }
 
     </style>
 </head>
@@ -225,7 +236,7 @@
                 <span class="span2">
                     <button id="no-button" onclick="closePopup()">No</button>
                
-                    <button id="yes-button" onclick="redirectToNextPage()">Yes</button>
+                    <a href="{{ url_for('logout_page')}}" class="nav-link1"> <button id="yes-button" onclick="redirectToNextPage()">Yes</button> </a>
                 </span>
                
                
