@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+     *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: microsoft yahei, sans-serif;
+       
+     }
+
+     body{
+        background-color: #333;
+     }
+header {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 0;
+}
+        nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.left-corner button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: -10px;
+}
+
+.center-heading  {
+    font-size:22px;
+     display: flex;
+     text-align: center;
+   
+}
+
+.norecord{
+   text-align: center;   position: fixed;
+   margin-left: 38%; 
+   margin-top: 15px;
+   color: rgb(10, 9, 9);
+   z-index: -23 ;
+
+   
+}
+
+
+
+
+.main ul{
+    overflow: hidden;
+    border-left: 0.013333rem solid #eee;
+    border-top: 0.013333rem solid #eee;
+    display: flex;
+    
+    
+   
+}
+
+.order_info {
+    margin-top: 0.5rem;
+    display: flex;
+    background-color: black;
+    color: white;
+    padding: 0 12px 10px;
+    padding-top: 10px;
+    border-radius: 10px;
+    box-shadow: -1px 2px 8px #fff;
+   
+}
+
+
+
+.info_img {
+    background: none;
+    height: auto;
+}
+.info_img {
+    width: auto;
+    height: 3rem;
+    background: none;
+  
+    
+}
+img{
+    width: 80%;
+    height: auto;
+    border-radius: 50%;
+    margin-top: 10px;
+    display: block;
+}
+
+.info_data {
+    display: inline-block;
+}
+.info_data {
+    max-width: 55%;
+    margin: 0 12px 0 0.5rem;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.info_data>p, .info_money>p {
+    margin-bottom: 3px;
+}
+.info_name, .info_store, .money, .info_num {
+    font-size: 12px;
+}
+
+.info_name, .order_num {
+    color: #6dc4e7;
+    font-size: 13px;
+}
+.money{
+    color: rgb(6, 247, 247);
+}
+
+.info_store{
+    color: rgb(167, 238, 229);
+}
+
+.info_num{
+    color: rgb(183, 234, 235);
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+    <nav>
+        <div class="left-corner">
+            <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-lg"></i></button>
+        </div>
+        <div class="center-heading">
+           <p>Level 1</p>
+        </div>
+    </nav>
+</header>
+<main >
+    <div class="norecord"> <p >No record</p></div>
+    <ul data-v-b7e8b406="" style="padding: 10px">
+       
+    <li id="28">
+        <div class="order_info">
+            <div class="info_img"><img src="https://tse3.mm.bing.net/th?id=OIP.fb1HVhjt6VloCFYBV7AmCQHaE9&pid=Api&P=0&h=180" alt="" style="
+        background: #ff5e00;
+    "></div>
+    <div class="info_data"><p class="info_name">Name:897****113</p><p class="info_store">Recharge:0</p><p class="info_store">Withdraw:0</p></div><div class="info_money"><p class="money" >Phone:897****113</p><p class="money">Recommended number: 0</p><p><span class="info_num">Registration time:15-09-2023 19:48:35</span></p></div></div></li><li id="28">
+        <div class="order_info">
+            <div class="info_img"><img src="https://tse3.mm.bing.net/th?id=OIP.fb1HVhjt6VloCFYBV7AmCQHaE9&pid=Api&P=0&h=180" alt="" style="
+        background: #ff5e00;
+    "></div>
+    <div class="info_data"><p class="info_name">Name:897****113</p><p class="info_store">Recharge:0</p><p class="info_store">withdraw:0</p></div><div class="info_money"><p class="money" >phone:897****113</p><p class="money">Recommended number: 0</p><p><span class="info_num">Registration time:15-09-2023 19:48:35</span></p></div></div></li><li id="28">
+  
+    </div>
+    </li>
+    </ul>
+   
+</main>
+</body>
+</html>
+
+
+
+
+<!-- {% extends 'base.html' %}
+{% block title %}
+Team
+{% endblock %} 
+{% block content %} 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Team </title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+        
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;}
+        
+
+        .container {
+            margin-top: 5%;
+            max-width: 800px;
+            padding: 20px;
+            background-image: url(https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
+            background-size: cover;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+    
+            h1 {
+            text-align: center;
+            background: linear-gradient(to right,#00A8FF, #8C55AA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+        }
+        
+
+        table {
+            margin-left: -3%;
+            width: 90%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-left: 1px solid rgb(0, 153, 255);
+            border-right: 1pxsolid rgb(0, 0, 0);
+        }
+
+        th, td {
+            margin-left: 5%;
+            margin-left: 5vw;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #2ba2f1;
+            border-top: 1px solid rgb(0, 183, 255);
+            border-right: 1.5px solid rgb(21, 187, 209);
+        }
+
+        th {
+            background-color: #f5fafa;
+            font-weight: bold;
+            border-right: 1.5px solid rgb(21, 187, 209);
+        }
+
+        tr:nth-child(even) {
+            background-color: #c7e7fa85;
+            border-right: 1.5px solid rgb(21, 187, 209);
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Team</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Registration Time</th>
+                    <th>Name</th>
+                    <th>Recharge</th>
+                    <th>Your Income</th>
+                </tr>
+            </thead>
+            <tbody>
+                      {% for friend in frineds %} 
+       <tr>
+       <td>{{ friend.register_time }}</td>
+       <td>{{ friend.username }}</td>
+       <td>{{ friend.recharge_amount }}</td>
+       <td>{{ friend.referred_bonus }}</td>
+       </tr>
+       {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        window.addEventListener("load", function() {
+            var container = document.querySelector(".container");
+            container.style.animation = "fadeInUp 1s ease-in";
+        });
+    </script>
+</body>
+</html>
+{% endblock %}
+{% include 'includes/icon.html' %}
+
+
+    -->

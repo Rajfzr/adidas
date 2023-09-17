@@ -1,121 +1,270 @@
-{% extends 'base.html' %}
-{% block title %}
-Team
-{% endblock %} 
-{% block content %} 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Team </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>team</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
-        
+        *{
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 70vh;}
-        
-
-        .container {
-            margin-top: 5%;
-            max-width: 800px;
-            padding: 20px;
-            background-image: url(https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
-            background-size: cover;
-            border-radius: 25px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+           
+            font-family: Microsoft YaHei , sans-serif;
         }
 
+        body{
+            background-color: black;
+            color: #fff;
+        }
+
+
+        nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+   
+}
+
+.left-corner button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: -14px;
+}
+
+a{
+    color: white; 
+    cursor: pointer;
+    text-decoration: none ; 
+}
+.level-box {
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 8px;
+    margin-right: 30%;
+    background-color: black;
+    margin-left: 20%;
+    margin: 58px;
+    color: #fff;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: -1px 2px 8px #fff;
+    margin-top: 21px;
+}
+
+.level-box2 {
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 8px;
+    margin-right: 30%;
+    background-color: black;
+    margin-left: 20%;
+    margin: 58px;
+    color: #fff;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: -1px 2px 8px #fff;
+    margin-top: 11px;
+}
+
+
+
+.level-box3 {
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 8px;
+    margin-right: 30%;
+    background-color: black;
+    margin-left: 20%;
+    margin: 58px;
+    color: #fff;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: -1px 2px 8px #fff;
     
-            h1 {
+}
+
+
+.level-box:hover{
+    
+            background: #08b1ff88;
+        
+}
+
+
+.level-box2:hover{
+    
+            background: #08b1ff88;
+        
+}
+
+.level-box3:hover{
+    
+    background: #08b1ff88;
+
+}
+
+.container {
             text-align: center;
-            background: linear-gradient(to right,#00A8FF, #8C55AA);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 30px;
+            padding: 20px;
         }
+
+        .logo {
+            /* Add your logo styles here */
+            margin-top: 20px;
+        }
+        .logo img{
+            margin-top: -73px;
+            width: 100%;
+            height: auto;
+        }
+        .id {
+            font-size: 24px;
+            margin-top: 1px;
+            border: 1px solid white;
+        }
+
+        .id span{
+            font-size: 20px;
+             color: #007bff;
+          
+        }
+
+        .header-row {
+            background-color: white;
+            height: 40px;
+            margin-top: 20px;
+        }
+
+        .border-box {
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px -20px;
+            margin-top: -20px;
+        }
+
+        .left, .center, .right {
+           
+            background: #000000;
+            
+            padding: 12px;
+            border-radius: 10px;
+            border: 1.5px solid #fff;
+            box-shadow: -1px 2px 8px #fff;
+        }
+
+        .right:hover{
+            background: #08b1ff88;
+        }
+
+        .left:hover{
+            background: #08b1ff88;
+        }
+
+        .center:hover{
+            background: #08c5ff88;
+        }
+
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-direction: column;
+            
+            
+        }
+
+        .button-container:hover{
+            color: #0bc9e2;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            background: #333; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            gap: 100px;
+            font-size: 15px;
+        }
+
+        button:hover{
+            
+            background: #0592bd;
+        }
+
         
 
-        table {
-            margin-left: -3%;
-            width: 90%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            border-left: 1px solid rgb(0, 153, 255);
-            border-right: 1pxsolid rgb(0, 0, 0);
+        /* Media query for smartphones */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
         }
 
-        th, td {
-            margin-left: 5%;
-            margin-left: 5vw;
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #2ba2f1;
-            border-top: 1px solid rgb(0, 183, 255);
-            border-right: 1.5px solid rgb(21, 187, 209);
-        }
-
-        th {
-            background-color: #f5fafa;
-            font-weight: bold;
-            border-right: 1.5px solid rgb(21, 187, 209);
-        }
-
-        tr:nth-child(even) {
-            background-color: #c7e7fa85;
-            border-right: 1.5px solid rgb(21, 187, 209);
-        }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+       
     </style>
 </head>
 <body>
+    <nav>
+        <div class="left-corner">
+            <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-lg"></i></button>
+        </div>
+        </div>
+    </nav>
     <div class="container">
-        <h1>Team</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Registration Time</th>
-                    <th>Name</th>
-                    <th>Recharge</th>
-                    <th>Your Income</th>
-                </tr>
-            </thead>
-            <tbody>
-                      {% for friend in frineds %} 
-       <tr>
-       <td>{{ friend.register_time }}</td>
-       <td>{{ friend.username }}</td>
-       <td>{{ friend.recharge_amount }}</td>
-       <td>{{ friend.referred_bonus }}</td>
-       </tr>
-       {% endfor %}
-                
-            </tbody>
-        </table>
-    </div>
+        <div class="logo">
+            <!-- Company logo here -->
+            <img src="https://tse2.explicit.bing.net/th?id=OIP.1LZl3Ilmy-0fP9nomCh5pgE8DF&pid=Api&P=0&h=180" alt="Company Logo">
+        </div><br>
+       
+        
+        <div class="border-box">
+            <div class="left">
+                Team Recharge <br>&#8377; 00.00
+            </div>
+           
+            <div class="right">
+                Team Member <br> 0
+            </div>
+        </div>
+        <!-- <div class="button-container">
+            <button><i class="fa-solid fa-money-bill-transfer fa-lg"></i> Withdrawal</button>
+            <button><i class="fa-solid fa-indian-rupee-sign fa-xl"></i>&nbsp; Recharge</button>
+            <button><i class="fa-solid fa-calendar-days fa-xl"></i> My Plans</button>
+            
+            
+        </div> -->
+        <br>
+        
+        <div class="level-box">
+         <a href="{{url_for('team1')}}">Level 1</a>
+        </div>
 
-    <script>
-        window.addEventListener("load", function() {
-            var container = document.querySelector(".container");
-            container.style.animation = "fadeInUp 1s ease-in";
-        });
-    </script>
+        <div class="level-box2">
+            <a href="">Level 2</a>
+          </div>
+
+          <div class="level-box3">
+           <a href="">Level 3</a>
+          </div>
+       
+    </div>
 </body>
 </html>
-{% endblock %}
-{% include 'includes/icon.html' %}
-
-
-   

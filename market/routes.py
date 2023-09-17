@@ -136,15 +136,18 @@ def generate_referral_code():
     digits = string.digits
     return ''.join(random.choice(letters + digits) for i in range(6))
 
-
 @app.route('/team')
 def team():
+    return render_template('team.html')
+
+@app.route('/team1')
+def team1():
     frineds = User.query.filter_by(referred_by=current_user.id).all()
     user = current_user
     bonus = user.recharge_amount*0.2
     user.referred_bonus += bonus
     user.update_referred_bonus()
-    return render_template('team.html', frineds=frineds)
+    return render_template('team1.html', frineds=frineds)
     
 @app.route('/my product')
 def record():
