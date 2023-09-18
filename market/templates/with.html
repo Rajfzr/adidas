@@ -1,4 +1,230 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Withdraw Page</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: microsoft yahei, sans-serif;
+        }
+        body {
+           
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+
+        header {
+         background-color: #000000;
+         color: #fff;
+         padding: 10px 0;
+           }
+
+           nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.left-corner button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: -10px;
+}
+
+.center-heading{
+     font-size: 20px;
+}
+        .container {
+            padding: 20px;
+        }
+
+        .box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+            color: white;
+            background-color: black;
+            box-shadow: -1px 2px 8px #fff;
+            border-radius: 10px;
+            line-height: 2.5rem;
+        }
+
+        #tax span {
+           
+            font-size: 15px;
+            border: 2px solid rgb(0, 157, 255);
+            border-radius: 10px;
+            padding: 5px;
+            color: rgb(166, 212, 240) ;
+        }
+
+        .box-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            
+        }
+
+        .box-content span {
+            font-size: 14px;
+        }
+
+        .box1{
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: white;
+            background-color: black;
+            border-radius: 10px;
+            box-shadow: -1px 2px 8px #fff;
+        }
+
+        .box-content1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: rgb(145, 219, 248);
+        }
+        .box-content1 span {
+            font-size: 12px;
+            line-height: 2rem;
+        }
+
+        
+
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        
+        input[type="password"] {
+            flex: 1;
+            padding: 5px;
+            border: none;
+            font-size: 15px;
+            border-radius: 10px;
+            border: none;
+            
+        }
+
+        input[type="number"]{
+            flex: 1;
+            padding: 6px;
+            margin-right: 200px ;
+            font-size: 15px;
+            border-radius: 10px;
+            border: none;
+        }
+
+          ::placeholder{
+            font-size: 20px;
+        }
+        
+
+       
+
+        .submit-button {
+            background-color: #0592bd;
+            color: white;
+            padding: 10px 172px;
+            border: none;
+            cursor: pointer;
+            border-radius: 12px;
+            font-size: 15px;
+            box-shadow: -1px 5px 15px 0 #0592bd;
+        }
+
+        .submit-button:hover{
+            background-color: rgb(9, 177, 255);
+        }
+
+        @media (max-width: 768px) {
+           
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left-corner">
+                <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-xl"></i></button>
+            </div>
+            <div class="center-heading">
+               <p>Withdraw</p>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="box">
+            <div id="tax"><span> Tax 10%</span></div>
+            <div class="box-content">
+                <span style="font-size: 34px;">&#8377;</span>&nbsp;
+                <input type="number" placeholder="Amount">
+            </div>
+            <div class="box-content">
+                <span>Balance: &#8377; 50.00</span>
+                 <!-- <span><a href="" style="color: rgb(15, 181, 252); text-decoration: none;">Withdraw All</a></span> -->
+            </div>
+        </div>
+        <div class="box">
+            <div class="box-content">
+                <span>Phone Number:</span>
+                <span>34837**23</span>
+            </div>
+            <div class="box-content">
+                <span>Bank Account:</span>
+                <span>32442888***</span>
+            </div>
+            <div class="box-content">
+                <span>Withdrawal Password:</span>&nbsp;
+                <input type="password" class="password" placeholder="Enter password" >
+            </div>
+        </div>
+        <div class="box1">
+            <div class="box-content1">
+                <span  class="span1"><sup>*</sup> Withdrawal Time 00:30 - 18:00</span>
+
+            </div>
+            <div class="box-content1">
+                <span class="span1"><sup>*</sup> Minimum Withdrawal Amount:</span>
+                
+            </div>
+            <div class="box-content1">
+             <span class="span1"><sup>*</sup> Fill in the IFSC code correctly, otherwisethe withdrawal will be failed</span>
+            </div>
+
+            <div class="box-content1">
+                <span class="span1"><sup>*</sup> The actual arrival time of all withdrawal is subject to the processing time of the local bank</span>
+               </div>
+        </div>
+        <div class="input-container">
+            <input type="submit" class="submit-button" value="Submit">
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+<!-- {% extends 'base.html' %}
 {% block title %}
 Withdraw record
 {% endblock %} 
@@ -140,4 +366,4 @@ Withdraw record
    
 
 {% endblock %}
-{% include 'includes/icon.html' %}
+{% include 'includes/icon.html' %} -->

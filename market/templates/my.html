@@ -32,7 +32,7 @@
             height: auto;
         }
         .id {
-            font-size: 35px;
+            font-size: 60px;
             margin-top: 1px;
             border: 1px solid white;
         }
@@ -149,7 +149,7 @@
 
            .popup-content{
             height: 450px;
-            width: 403px;
+            width: 70%;
             margin: 100px auto;
             background: #000000;
             padding: 20px;
@@ -168,9 +168,10 @@
             padding: 10px 20px;
             border: none;
             cursor: pointer;
-            font-size: 33px;
+            font-size: 37px;
             width: 39%;
            }
+           
 
            #yes-button{
             background-color: #fff;
@@ -195,7 +196,7 @@
         
   
           h3{
-            font-size: 33px;
+            font-size: 48px;
           }
 
     </style>
@@ -204,7 +205,7 @@
     <div class="container">
         <div class="logo">
             <!-- Company logo here -->
-            <img src="adidas.jpg" alt="Company Logo">
+            <img src="https://i.ibb.co/MDqbjVT/adidas.jpg" alt="Company Logo">
         </div>
         <div class="id">
             ID : {{current_user.username}} <span><sup>VIP0</sup></span>
@@ -222,14 +223,14 @@
             </div>
         </div>
         <div class="button-container">
-            <button><i class="fa-solid fa-money-bill-transfer fa-lg"></i> Withdrawal</button>
-            <button><i class="fa-solid fa-indian-rupee-sign fa-xl"></i>&nbsp; Recharge</button>
-            <button><i class="fa-solid fa-calendar-days fa-xl"></i> My Plans</button>
-            <button><i class="fa-solid fa-file fa-xl"></i> &nbsp;Funds Records</button>
-            <button><i class="fa-solid fa-info fa-xl"></i>&nbsp;&nbsp;<a href="{{url_for('company')}}">Information</a></button>
-            <button><i class="fa-solid fa-gear fa-xl"></i>Bank Settings</button>
+            <button><i class="fa-solid fa-money-bill-transfer fa-lg"></i>&nbsp;&nbsp;<a href="{{url_for('company')}}"> Withdrawal</a></button>
+            <button><i class="fa-solid fa-indian-rupee-sign fa-xl"></i>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('recharge')}}"> Recharge</a></button>
+           <button><i class="fa-solid fa-calendar-days fa-xl"></i>&nbsp;&nbsp;&nbsp; <a href="{{url_for('method1')}}"> My Plans</a></button>
+           <button><i class="fa-solid fa-file fa-xl"></i> &nbsp;&nbsp;&nbsp; <a href="{{url_for('record')}}">Funds Records</a></button>
+            <button><i class="fa-solid fa-info fa-xl"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('company')}}">Information</a></button>
+            <button><i class="fa-solid fa-gear fa-xl"></i>&nbsp;&nbsp;<a href="{{url_for('method2')}}">Bank Settings</a></button>
            
-            <button onclick="showPopup()"><i class="fa-solid fa-arrow-right-to-bracket fa-rotate-180 fa-xl"></i>Sign out</button>
+            <button onclick="showPopup()"><i class="fa-solid fa-arrow-right-to-bracket fa-rotate-180 fa-xl"></i>&nbsp;&nbsp;&nbsp;&nbsp;Sign out</button>
             
         </div>
         <div class="popup" id="popup">
