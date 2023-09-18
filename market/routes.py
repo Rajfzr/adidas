@@ -80,6 +80,7 @@ def login_page():
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
             return redirect(url_for('market_page'))
+            
         else:
             flash('Username and password are not match!', category='danger')    
     return render_template('login.html', form=form)       

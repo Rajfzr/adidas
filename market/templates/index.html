@@ -217,19 +217,28 @@ input[type="submit"]{
             
 
         }
-
+ 
         .flash-message {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px;
-            background-color: #f1f1f1;
-            border-bottom: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            font-size: 16px;
-            text-align: center;
+           
             display: none;
+          
+            position: fixed;
+            top: 50%;
+            left: 50%;
+    
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+            border: 3px dotted rgb(14, 166, 242);
+            border-radius: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100000;
+            color: white;
+            background: rgba(0, 0, 0, 0.9);
+
+            border-radius: 10px;
+            opacity: 90;
         }
 
         .flash-message.show {
