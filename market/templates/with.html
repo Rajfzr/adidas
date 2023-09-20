@@ -169,15 +169,16 @@
             </div>
         </nav>
     </header>
+    <form method="post">
     <div class="container">
         <div class="box">
             <div id="tax"><span> Tax 10%</span></div>
             <div class="box-content">
                 <span style="font-size: 34px;">&#8377;</span>&nbsp;
-                <input type="number" placeholder="Amount">
+                <input type="number" name="amount" id="amount" placeholder="Amount" required="">
             </div>
             <div class="box-content">
-                <span>Balance: &#8377; 50.00</span>
+                <span>Balance: &#8377; {{current_user.budget}}</span>
                  <!-- <span><a href="" style="color: rgb(15, 181, 252); text-decoration: none;">Withdraw All</a></span> -->
             </div>
         </div>
@@ -192,7 +193,7 @@
             </div>
             <div class="box-content">
                 <span>Withdrawal Password:</span>&nbsp;
-                <input type="password" class="password" placeholder="Enter password" >
+                <input type="password" id="passs" name="passs" class="password" placeholder="Enter password" >
             </div>
         </div>
         <div class="box1">
@@ -213,9 +214,10 @@
                </div>
         </div>
         <div class="input-container">
-            <input type="submit" class="submit-button" value="Submit">
+            <input type="submit" id="submit" name="submit" class="submit-button" value="Submit">
         </div>
     </div>
+    </form>
 </body>
 </html>
 

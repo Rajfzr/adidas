@@ -60,14 +60,22 @@ class Item(db.Model):
 class Payout(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     h_name = db.Column(db.String(), nullable=False)
+    p_name = db.Column(db.String(), nullable=False)
     ac_name= db.Column(db.String(), nullable=False)
     ac_number = db.Column(db.Integer(), nullable=False, unique=True)
-    ac_ifsc = db.Column(db.String(), nullable=False)
-    withdraw = db.Column(db.Integer(), nullable=False)
-    withdraw2 = db.Column(db.Float(), nullable=False, unique=True)
-    withdraw_time = db.Column(db.DateTime, default=datetime.now)
-    withdraw_status = db.Column(db.String(), default='Pending')
+    w_pass = db.Column(db.String(), nullable=False)
+    # withdraw = db.Column(db.Integer(), nullable=False)
+    # withdraw2 = db.Column(db.Float(), nullable=False, unique=True)
+    # withdraw_time = db.Column(db.DateTime, default=datetime.now)
+    # withdraw_status = db.Column(db.String(), default='Pending')
     check = db.Column(db.Integer(), db.ForeignKey('user.id'))
+
+class Withdrawlss(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    amount = db.Column(db.String(), nullable=False)
+    passs = db.Column(db.String(), nullable=False)
+    user_id = db.Column(db.String(), nullable=False)
+
 
 class Buyer(db.Model):
     id = db.Column(db.Integer(), primary_key=True)

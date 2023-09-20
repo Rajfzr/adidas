@@ -1,7 +1,7 @@
 from market import app
 from flask import render_template, redirect, url_for, flash, request, session, abort
-from market.forms import RegisterForm,  LoginForm, PurchaseItemForm, SellItemForm, WithdrawlForm, RechargeForm                  
-from market.models import Item, User, Payout, Buyer, Recharge
+from market.forms import RegisterForm,  LoginForm, PurchaseItemForm, SellItemForm, WithdrawlForm, RechargeForm, PayoutForm                  
+from market.models import Item, User, Payout, Buyer, Recharge, Withdrawlss
 from market import db, bcrypt
 from flask_login import login_user, logout_user, current_user, login_required
 from datetime import datetime
@@ -44,6 +44,7 @@ def register_page():
         user_to_create = User(username=form.username.data, password=form.password1.data, with_password=form.with_password.data, refer_code=link_id, referral_code=generate_referral_code(), referred_by=referred_by, register_time=register_time)
         db.session.add(user_to_create)    
         db.session.commit()
+        flash('Account created successfully')
         return redirect(url_for('login_page'))
     if form.errors != {}:
         for err_msg in form.errors.values():
@@ -82,6 +83,7 @@ def login_page():
         attempted_user = User.query.filter_by(username=form.username.data).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
+            flash('Login successfully')
             return redirect(url_for('market_page'))
             
         else:
@@ -95,27 +97,42 @@ def logout_page():
 
 @app.route('/withdrawl', methods=['GET', 'POST'])
 def withdrawl_page():  
-    withdraw_time = datetime.datetime.now()
-    withdraw_time = withdraw_time.replace(second=0, microsecond=0)
-    attempted_withdraw = Payout.query.filter_by(check=current_user.id).first()
-    attempted_withdrawl = Payout.query.filter_by(check=current_user.id).order_by(Payout.ac_number.desc()).first()
-    form = WithdrawlForm(obj=attempted_withdrawl) if attempted_withdrawl else WithdrawlForm()
-    enter_amount = form.withdraw.data
-    withdraw23 = enter_amount*0.90
+    # withdraw_time = datetime.datetime.now()
+    # withdraw_time = withdraw_time.replace(second=0, microsecond=0)
+    # attempted_withdraw = Payout.query.filter_by(check=current_user.id).first()
+    # attempted_withdrawl = Payout.query.filter_by(check=current_user.id).order_by(Payout.ac_number.desc()).first()
+    # form = WithdrawlForm(obj=attempted_withdrawl) if attempted_withdrawl else WithdrawlForm()
+    # enter_amount = form.withdraw.data
+    # withdraw23 = enter_amount*0.90
+    # if form.validate_on_submit():
+    #     if attempted_withdraw:
+    #         flash('Bank account already bind')
+    #     else:
+    #         if enter_amount>=130 and current_user.budget>=enter_amount:
+    #             current_user.budget -= enter_amount
+    #             ac = Payout(h_name=form.h_name.data,ac_name=form.ac_name.data, ac_number=form.ac_number.data, ac_ifsc=form.ac_ifsc.data,withdraw=form.withdraw.data, withdraw2=withdraw23, check=current_user.id, withdraw_time=withdraw_time)
+    #             db.session.add(ac)
+    #             db.session.commit()
+    #             acc = Payout
+    #             flash('Withdraw submitted !')
+    #         else:
+    #             flash('withdraw amount is below 130 or insufficient balance !', category='danger')
+    # return render_template('withdrawl.html', form=form)
+
+    form=WithdrawlForm()
     if form.validate_on_submit():
-        if attempted_withdraw:
-            flash('Per day 1 withdraw allowed')
-        else:
-            if enter_amount>=130 and current_user.budget>=enter_amount:
-                current_user.budget -= enter_amount
-                ac = Payout(h_name=form.h_name.data,ac_name=form.ac_name.data, ac_number=form.ac_number.data, ac_ifsc=form.ac_ifsc.data,withdraw=form.withdraw.data, withdraw2=withdraw23, check=current_user.id, withdraw_time=withdraw_time)
-                db.session.add(ac)
-                db.session.commit()
-                acc = Payout
-                flash('Withdraw submitted !')
-            else:
-                flash('withdraw amount is below 130 or insufficient balance !', category='danger')
-    return render_template('withdrawl.html', form=form)
+           
+           ac = Payout(h_name=form.h_name.data, p_name=form.p_name.data, ac_name=form.ac_name.data, ac_number=form.ac_number.data, ac_ifsc=form.ac_ifsc.data, with_pass=form.with_pass.data,  check=current_user.id)
+           db.session.add(ac)
+           db.session.commit()
+           acc = Payout
+           flash('Bank added successfully')
+    return render_template('withdrawl.html', form=form)    
+    
+
+
+
+
 
 @app.route('/Income')
 def income_page():
@@ -173,10 +190,24 @@ def company():
     boys = Buyer.query.filter_by(item_owner=current_user.id).all()
     return render_template('company.html', boys=boys)
 
-@app.route('/withdrawls')
+@app.route('/withdrawls', methods=['GET', 'POST'])
 def withdrawls():
-    children = Payout.query.filter_by(check=current_user.id).all()
-    return render_template('with.html', children=children )
+    form=PayoutForm()
+    attempted_withdraw = Withdrawlss.query.filter_by(check=current_user.id).first()
+    enter_amount=form.amount.data
+    if form.validate_on_submit():
+        if attempted_withdraw:
+            flash('Per day 1 is allowed')
+        else:
+           if enter_amount>=150 and current_user.budget>=enter_amount:          
+               pay = Withdrawlss(amount=form.amount.data, passs=form.passs.data, user_id=current_user.id)
+               db.session.add(pay)
+               db.session.commit()
+               flash('Withdrawl submitted')
+           else:
+               flash('Minimum withdrawl amount is 150')
+    # children = Payout.query.filter_by(check=current_user.id).all()
+    return render_template('with.html', form=form )
 
 
  
@@ -217,6 +248,7 @@ def method3():
     form = RechargeForm()
     amount_rech = form.rech_amount.data
     if form.validate_on_submit():
+        
         if amount_rech>=499:
             rech = Recharge(rech_amount=form.rech_amount.data, utr=form.utr.data, rech_owner=current_user.id)
             db.session.add(rech)
@@ -229,3 +261,18 @@ def method3():
 @app.route('/recharge')
 def recharge():
     return render_template('recharge.html')
+
+
+
+
+@app.route('/withdrawl paasword')
+def withpass():
+    return render_template('withpass.html')
+
+@app.route('/login password')
+def loginpass():
+    return render_template('loginpass.html')
+
+@app.route('/personal setting')
+def setting():
+    return render_template('setting.html')

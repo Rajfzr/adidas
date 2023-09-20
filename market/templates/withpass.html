@@ -127,67 +127,26 @@ nav {
                 <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-lg"></i></button>
             </div>
             <div class="center-heading">
-             <b>My Bank</b>
+             <b>Change Fund password</b>
             </div>
         </nav>
     </header>
     
         
-        <form method="post">
+        <form>
            
-            <input type="text" id="h_name" name="h_name" placeholder="Full Name" required="">
-
-           
-            <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required="">
+            <input type="text" id="Old login password" name="old password" placeholder="Old withdrawal password" required>
 
            
-            <input type="text" id="ac_name" name="ac_name" placeholder="Bank Name" required="">
+            <input type="text" id="new login password" name="new login password" placeholder="New withdrawal password" required>
 
            
-            <input type="text" id="ac_number" name="ac_number" placeholder="Bank Account" required="">
+            <input type="text" id="confirm login password" name=" confirm password" placeholder="Confirm new password" required>
 
            
-            <input type="text" id="ac_ifsc" name="ac_ifsc" placeholder="IFSC" required="">
-
-            
-            <input type="password" id="w_pass" name="w_pass" placeholder="Withdrawal password" required=""> 
-
-           <input type="submit" id="submit" name="submit" value="comfirm"> 
+          
+            <button type="submit">Confirm</button>
         </form>
     
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-  {% for category, message in messages %}
-<div class="flash-message" id="flash-message">
-  {{ message }}
-</div>
-  {% endfor %} 
-{% endif %}  
-{% endwith %}  
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      var flashMessage = document.getElementById('flash-message');
-      flashMessage.classList.add('show');
-
-      setTimeout(function() {
-          flashMessage.classList.remove('show');
-      }, 3000);
-  });
-</script>

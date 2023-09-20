@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Phone Display Interface</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Microsoft YaHei , sans-serif;
+        }
+        body {
+            
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        header {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.left-corner button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: -1px;
+}
+
+.center-heading  {
+    font-size: 35px;
+     display: flex;
+     justify-content: center;
+   
+}
+
+        .button-container {
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            
+            cursor: pointer;
+        }
+
+        .action-button {
+            background-color: #444;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            margin-top: 40px;
+            margin-bottom: -15px;
+            padding: 10px;
+            
+            display: flex;
+            align-items: center;
+            /* justify-content: space-between; */
+        }
+
+        .action-button:hover{
+            background-color: #0592bd;
+        }
+
+        .action-icon {
+            width: 40px;
+            height: 30px;
+            margin-top: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .action-text {
+            font-size: 20px;
+            color: white;
+            
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    
+        <header>
+            <nav>
+                <div class="left-corner">
+                    <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-xl"></i></button>
+                </div>
+                <div class="center-heading">
+                    Settings
+                </div>
+            </nav>
+        </header>
+  
+    <div class="button-container">  
+<a href="{{url_for('withdrawl_page')}}"> <button class="action-button">
+            <div class="action-icon"><i class="fa-solid fa-caret-up fa-rotate-90 fa-2xl" style="color: #ffffff;"></i></div>
+            <div class="action-text">My bank&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        </button></a><br>
+
+
+      <a href="{{url_for('loginpass')}}">  <button class="action-button">
+            <div class="action-icon"><i class="fa-solid fa-caret-up fa-rotate-90 fa-2xl" style="color: #ffffff;"></i></div>
+            <div class="action-text">Change Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button><br>
+       </button>
+      </a>
+
+      <a href="{{url_for('withpass')}}">
+        <button  class="action-button">
+            <div class="action-icon"><i class="fa-solid fa-caret-up fa-rotate-90 fa-2xl" style="color: #ffffff;"></i></div>
+            <div class="action-text">Withdrawal Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            
+        </button>
+      </a>
+
+    </div>
+</body>
+</html>

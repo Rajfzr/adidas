@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, IntegerField, TextAreaField, BooleanField, FloatField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
-from market.models import User, Recharge, Payout
+from market.models import User, Recharge, Payout, Withdrawlss
 
 class RegisterForm(FlaskForm):
     def validate_username(self, username_to_check):
@@ -43,11 +43,18 @@ class WithdrawlForm(FlaskForm):
             raise ValidationError("Account number already exist!")
 
     h_name = StringField(label='Holder name', validators=[DataRequired()])
+    p_name = StringField(label='Phone number', validators=[DataRequired()])
     ac_name = StringField(label='bank name', validators=[DataRequired()])
     ac_number = IntegerField(label='Account number', validators=[DataRequired()])
     ac_ifsc = StringField(label='Ifsc code', validators=[DataRequired()])
-    withdraw = IntegerField(label='Enter amount', validators=[DataRequired()])
+    w_pass = PasswordField(label='Password', validators=[DataRequired()])
+    # withdraw = IntegerField(label='Enter amount', validators=[DataRequired()])
     submit = SubmitField(label='Withdraw')
+
+class PayoutForm(FlaskForm):
+    amount = StringField(label='Ifsc code', validators=[DataRequired()])
+    passs = PasswordField(label='Password', validators=[DataRequired()])   
+    submit = SubmitField(label='Confirm')
 
 class RechargeForm(FlaskForm):
     def validate_utr(self, utr_to_check):
