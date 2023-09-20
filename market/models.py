@@ -12,9 +12,10 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
-    username = db.Column(db.String(length=30), nullable=False, unique=True)
-    email_address = db.Column(db.String(length=50), nullable=False, unique=True)
+    username = db.Column(db.String(length=10),  nullable=False, unique=True)
+    # email_address = db.Column(db.String(length=50), nullable=False, unique=True)
     password_hash = db.Column(db.String(length=60), nullable=False)
+    with_password = db.Column(db.String(length=60), nullable=False)
     budget = db.Column(db.Integer(), nullable=False, default=50)
     referral_code = db.Column(db.String(), unique=True)
     referred_by = db.Column(db.Integer())
@@ -63,6 +64,7 @@ class Payout(db.Model):
     ac_number = db.Column(db.Integer(), nullable=False, unique=True)
     ac_ifsc = db.Column(db.String(), nullable=False)
     withdraw = db.Column(db.Integer(), nullable=False)
+    withdraw2 = db.Column(db.Float(), nullable=False, unique=True)
     withdraw_time = db.Column(db.DateTime, default=datetime.now)
     withdraw_status = db.Column(db.String(), default='Pending')
     check = db.Column(db.Integer(), db.ForeignKey('user.id'))

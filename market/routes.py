@@ -1,6 +1,6 @@
 from market import app
-from flask import render_template, redirect, url_for, flash, request, session
-from market.forms import RegisterForm,  LoginForm, PurchaseItemForm, SellItemForm, WithdrawlForm, RechargeForm                   
+from flask import render_template, redirect, url_for, flash, request, session, abort
+from market.forms import RegisterForm,  LoginForm, PurchaseItemForm, SellItemForm, WithdrawlForm, RechargeForm                  
 from market.models import Item, User, Payout, Buyer, Recharge
 from market import db, bcrypt
 from flask_login import login_user, logout_user, current_user, login_required
@@ -24,6 +24,7 @@ def register_page():
     register_time = register_time.replace(second=0, microsecond=0)
     if form.validate_on_submit():
         referral_code=form.referral_code.data
+        username=form.username.data
         link_id=generate_referral_code()
      # Check if referral code exists in the database
         referred_by = None 
@@ -38,7 +39,9 @@ def register_page():
             # referred_by_user.referred_bonus += 100
             db.session.commit()
 
-        user_to_create = User(username=form.username.data, email_address=form.email_address.data, password=form.password1.data, refer_code=link_id, referral_code=generate_referral_code(), referred_by=referred_by, register_time=register_time)
+    
+
+        user_to_create = User(username=form.username.data, password=form.password1.data, with_password=form.with_password.data, refer_code=link_id, referral_code=generate_referral_code(), referred_by=referred_by, register_time=register_time)
         db.session.add(user_to_create)    
         db.session.commit()
         return redirect(url_for('login_page'))
@@ -98,13 +101,14 @@ def withdrawl_page():
     attempted_withdrawl = Payout.query.filter_by(check=current_user.id).order_by(Payout.ac_number.desc()).first()
     form = WithdrawlForm(obj=attempted_withdrawl) if attempted_withdrawl else WithdrawlForm()
     enter_amount = form.withdraw.data
+    withdraw23 = enter_amount*0.90
     if form.validate_on_submit():
         if attempted_withdraw:
             flash('Per day 1 withdraw allowed')
         else:
             if enter_amount>=130 and current_user.budget>=enter_amount:
                 current_user.budget -= enter_amount
-                ac = Payout(h_name=form.h_name.data,ac_name=form.ac_name.data, ac_number=form.ac_number.data, ac_ifsc=form.ac_ifsc.data,withdraw=form.withdraw.data, check=current_user.id, withdraw_time=withdraw_time)
+                ac = Payout(h_name=form.h_name.data,ac_name=form.ac_name.data, ac_number=form.ac_number.data, ac_ifsc=form.ac_ifsc.data,withdraw=form.withdraw.data, withdraw2=withdraw23, check=current_user.id, withdraw_time=withdraw_time)
                 db.session.add(ac)
                 db.session.commit()
                 acc = Payout
