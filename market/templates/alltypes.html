@@ -77,6 +77,7 @@ header {
     padding-top: 10px;
     border-radius: 10px;
     box-shadow: -1px 2px 8px #fff;
+    
    
 }
 
@@ -86,10 +87,13 @@ header {
     background: none;
     height: auto;
 }
-.info_img {
+.info_sucess {
     width: auto;
     height: 3rem;
-    background: none;
+     margin-right: -50px;
+    margin-top: 27px;
+    font-size: 17px;
+    
   
     
 }
@@ -106,7 +110,7 @@ img{
 }
 .info_data {
     max-width: 55%;
-    margin: 0 12px 0 0.5rem;
+    margin: 0 20px 0 0.5rem;
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -114,6 +118,13 @@ img{
 
 .info_data>p, .info_money>p {
     margin-bottom: 3px;
+}
+
+.info_money{
+    margin-left: 130px;
+    margin-top: 15px;
+
+    
 }
 .info_name, .info_store, .money, .info_num {
     font-size: 12px;
@@ -124,7 +135,8 @@ img{
     font-size: 13px;
 }
 .money{
-    color: rgb(6, 247, 247);
+    color: rgb(70, 169, 246);
+    font-size: 0.9rem;
 }
 
 .info_store{
@@ -147,37 +159,26 @@ img{
             <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-lg"></i></button>
         </div>
         <div class="center-heading">
-           <p>Level 1</p>
+           <p>Withdrawals</p>
         </div>
     </nav>
 </header>
 <main >
     <div class="norecord"> <p >No record</p></div>
-    {% for pet in pets %}
     <ul data-v-b7e8b406="" style="padding: 10px">
        
     <li id="28">
         <div class="order_info">
-            <div class="info_img"><img src="https://tse3.mm.bing.net/th?id=OIP.fb1HVhjt6VloCFYBV7AmCQHaE9&pid=Api&P=0&h=180" alt="" style="
-        background: #ff5e00;
-    "></div>
-    <div class="info_data"><p class="info_name">Name:{{pet.username}}</p><p class="info_store">Recharge:{{pet.recharge_amount}}</p><p class="info_store">Withdraw:0</p></div><div class="info_money"><p class="money" >Phone:{{pet.username}}</p><p class="money">Recommended number: 0</p><p><span class="info_num">Registration time:{{pet.register_time}}</span></p></div></div></li><li id="28">
+            <div class="info_sucess"><span style="background-color: rgb(7, 142, 159); border-radius: 10px; padding: 4%;
+            box-shadow: -1px 5px 15px 0 #0592bd; border: 1px solid rgb(2, 2, 2); color: #ffffff;">&nbsp;Success&nbsp;</span></div>
+    <div class="info_money"><p class="money" >Phone:897****113</p><p class="money">Recommended number: 0</p></div></div></li><li id="28">
        
-        <!-- <div class="order_info">
-            <div class="info_img"><img src="https://tse3.mm.bing.net/th?id=OIP.fb1HVhjt6VloCFYBV7AmCQHaE9&pid=Api&P=0&h=180" alt="" style="
-        background: #ff5e00;
-    "></div>
-    <div class="info_data"><p class="info_name">Name:897****113</p><p class="info_store">Recharge:0</p><p class="info_store">withdraw:0</p></div><div class="info_money"><p class="money" >phone:897****113</p><p class="money">Recommended number: 0</p><p><span class="info_num">Registration time:15-09-2023 19:48:35</span></p></div></div></li><li id="28">
+   
   
-    </div> -->
+    </div>
     </li>
     </ul>
-    {% endfor %}
    
 </main>
 </body>
 </html>
-
-
-
-

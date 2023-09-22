@@ -156,6 +156,33 @@
         @media (max-width: 768px) {
            
         }
+
+        .flash-message {
+            position: fixed;
+           
+            display: none;
+          
+            position: fixed;
+            top: 50%;
+            left: 50%;
+    
+            transform: translate(-50%, -50%);
+            background-color: #000000;
+            border: 2px solid rgb(21, 173, 250);
+            border-radius: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 100000;
+            color: white;
+            background: rgba(0, 0, 0, 0.9);
+
+            border-radius: 10px;
+            opacity: 90;
+        }
+
+        .flash-message.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -169,7 +196,7 @@
             </div>
         </nav>
     </header>
-    <form method="post">
+    <form method="POST">
     <div class="container">
         <div class="box">
             <div id="tax"><span> Tax 10%</span></div>
@@ -185,11 +212,11 @@
         <div class="box">
             <div class="box-content">
                 <span>Phone Number:</span>
-                <span>34837**23</span>
+                <span>{{bank.p_name}}</span>
             </div>
             <div class="box-content">
                 <span>Bank Account:</span>
-                <span>32442888***</span>
+                <span> {{bank.ac_number}}</span>
             </div>
             <div class="box-content">
                 <span>Withdrawal Password:</span>&nbsp;
@@ -214,10 +241,30 @@
                </div>
         </div>
         <div class="input-container">
-            <input type="submit" id="submit" name="submit" class="submit-button" value="Submit">
+            <input type="submit" id="submit" name="submit" class="submit-button" value="Confirm">
         </div>
     </div>
     </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+  <div class="flash-message" id="flash-message">
+      {{ message }}
+  </div>
+      {% endfor %} 
+    {% endif %}  
+  {% endwith %}  
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var flashMessage = document.getElementById('flash-message');
+          flashMessage.classList.add('show');
+
+          setTimeout(function() {
+              flashMessage.classList.remove('show');
+          }, 3000);
+      });
+  </script>
 </body>
 </html>
 
@@ -225,147 +272,3 @@
 
 
 
-
-<!-- {% extends 'base.html' %}
-{% block title %}
-Withdraw record
-{% endblock %} 
-{% block content %}
-    
-    
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Withdraw Record</title>
-    <style>
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        body {
-          
-            font-family: Arial, sans-serif;
-        background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            margin-top: 10%;
-            padding:20px;
-            background-image: url(https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
-            background-size: cover;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-            
-            animation: backgroundAnimation 7s linear infinite;
-}
-
-@keyframes backgroundAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-        
-
-        h1 {
-            text-align: center;
-            background: linear-gradient(to right,#00A8FF, #8C55AA);
-            -webkit-background-clip: text;
-           -webkit-text-fill-color: transparent;
-            margin-bottom: 30px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            border: 1px solid rgb(9, 164, 236);
-            
-        }
-
-        th, td {
-            padding: 12px 8px;
-            text-align: left;
-            border-bottom: 1px solid #61bcd8;
-            border-left: 1px solid lightseagreen;
-        }
-
-        th {
-           /* background-color:aqua; */
-           background-size:auto;
-            font-weight:bolder;
-            font-size: 20px;
-           border-left: 1px solid rgb(0, 183, 255);
-        }
-
-        tr:nth-child(even) {
-            background-color: #b6d9dd41;
-            border-bottom: 1px solid rgb(178, 225, 247);
-        }
-
-        tr {
-            opacity: 0;
-            animation: fadeIn 1s ease-in forwards;
-        }
-
-        tr:nth-child(odd) {
-            animation-delay: 0.1s;
-            border-right: 1px solid rgb(0, 195, 255);
-        }
-
-        tr:nth-child(even) {
-            animation-delay: 0.2s;
-            border-bottom: 1px solid rgb(0, 255, 213);
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Withdraw Record</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for child in children %}
-                <tr>
-                    <td>{{child.withdraw_time}}</td>
-                    <td>{{child.withdraw}}</td>
-                    <td>{{child.withdraw_status}}</td>
-
-                </tr>
-              
-                {% endfor %}
-                {% for friend in friends %} 
-                <!-- <tr>
-                    <td>{{friend.rech_time}}</td>
-                    <td>{{friend.rech_amount}}</td>
-                    <td>{{child.withdraw_status}}</td>
-
-                </tr>
-                {% endfor %} -->
-                <!-- Add more table rows with respective date, amount, and status -->
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
-
-
-    
-   
-
-{% endblock %}
-{% include 'includes/icon.html' %} -->

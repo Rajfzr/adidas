@@ -45,14 +45,14 @@ class WithdrawlForm(FlaskForm):
     h_name = StringField(label='Holder name', validators=[DataRequired()])
     p_name = StringField(label='Phone number', validators=[DataRequired()])
     ac_name = StringField(label='bank name', validators=[DataRequired()])
-    ac_number = IntegerField(label='Account number', validators=[DataRequired()])
+    ac_number = StringField(label='Account number', validators=[DataRequired()])
     ac_ifsc = StringField(label='Ifsc code', validators=[DataRequired()])
     w_pass = PasswordField(label='Password', validators=[DataRequired()])
     # withdraw = IntegerField(label='Enter amount', validators=[DataRequired()])
     submit = SubmitField(label='Withdraw')
 
 class PayoutForm(FlaskForm):
-    amount = StringField(label='Ifsc code', validators=[DataRequired()])
+    amount = IntegerField(label='Ifsc code', validators=[DataRequired()])
     passs = PasswordField(label='Password', validators=[DataRequired()])   
     submit = SubmitField(label='Confirm')
 

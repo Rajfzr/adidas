@@ -44,7 +44,7 @@ def register_page():
         user_to_create = User(username=form.username.data, password=form.password1.data, with_password=form.with_password.data, refer_code=link_id, referral_code=generate_referral_code(), referred_by=referred_by, register_time=register_time)
         db.session.add(user_to_create)    
         db.session.commit()
-        flash('Account created successfully')
+        flash('Account created successful')
         return redirect(url_for('login_page'))
     if form.errors != {}:
         for err_msg in form.errors.values():
@@ -65,9 +65,9 @@ def market_page():
                 create = Buyer(item_owner=current_user.id, item_name=p_item_object.name)
                 db.session.add(create)
                 db.session.commit()
-                flash("Purchased successfully !", category='danger')
+                flash("Purchase successful !", category='danger')
             else:
-                flash("You don't have enough money !")    
+                flash("You don't have enough money ! Please recharge")    
 
         return redirect(url_for('market_page'))
     if request.method == "GET":
@@ -83,7 +83,7 @@ def login_page():
         attempted_user = User.query.filter_by(username=form.username.data).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
-            flash('Login successfully')
+            flash('Login successful')
             return redirect(url_for('market_page'))
             
         else:
@@ -93,6 +93,7 @@ def login_page():
 @app.route('/logout')
 def logout_page():
     logout_user()
+    flash('logout successful')
     return redirect(url_for("login_page"))
 
 @app.route('/withdrawl', methods=['GET', 'POST'])
@@ -122,11 +123,15 @@ def withdrawl_page():
     form=WithdrawlForm()
     if form.validate_on_submit():
            
-           ac = Payout(h_name=form.h_name.data, p_name=form.p_name.data, ac_name=form.ac_name.data, ac_number=form.ac_number.data, ac_ifsc=form.ac_ifsc.data, with_pass=form.with_pass.data,  check=current_user.id)
+           ac = Payout(h_name=form.h_name.data, p_name=form.p_name.data, ac_name=form.ac_name.data, ac_number=form.ac_number.data, ac_ifsc=form.ac_ifsc.data, w_pass=form.w_pass.data,  checkk=current_user.id)
            db.session.add(ac)
            db.session.commit()
            acc = Payout
-           flash('Bank added successfully')
+           flash('Bank added successful')
+           return redirect(url_for('withdrawls'))       
+    if form.errors != {}:
+       for err_msg in form.errors.values():
+          flash(f'There was an error: {err_msg}', category='danger')       
     return render_template('withdrawl.html', form=form)    
     
 
@@ -160,16 +165,24 @@ def generate_referral_code():
 
 @app.route('/team')
 def team():
-    return render_template('team.html')
+    friends = User.query.filter_by(referred_by=current_user.id).all()
+    total_referincome = sum(friend.recharge_amount for friend in friends)
+    # toys = User.query.filter_by(referred_by=current_user.id).all()
+    # total_referincome1 = sum(toy for toy in toys)
+    print("Total Budget:", total_referincome)
+    # total_profit = (profit.recharge_amount for profit in profits)
+    # total = sum(profit.recharge_amount)
+    return render_template('team.html', friends=friends,   total_referincome=total_referincome)
 
 @app.route('/team1')
 def team1():
-    frineds = User.query.filter_by(referred_by=current_user.id).all()
+    pets = User.query.filter_by(referred_by=current_user.id).all()
+    
     user = current_user
     bonus = user.recharge_amount*0.2
     user.referred_bonus += bonus
     user.update_referred_bonus()
-    return render_template('team1.html', frineds=frineds)
+    return render_template('team1.html', pets=pets)
     
 @app.route('/my product')
 def record():
@@ -177,7 +190,7 @@ def record():
 
 @app.route('/account record')
 def account():
-    children = Payout.query.filter_by(check=current_user.id).all()
+    children = Payout.query.filter_by(checkk=current_user.id).all()
     return render_template('account.html', children=children)
 
 @app.route('/personal info')
@@ -193,21 +206,36 @@ def company():
 @app.route('/withdrawls', methods=['GET', 'POST'])
 def withdrawls():
     form=PayoutForm()
-    attempted_withdraw = Withdrawlss.query.filter_by(check=current_user.id).first()
-    enter_amount=form.amount.data
+    attempted_withdraw = Withdrawlss.query.filter_by(user_id=current_user.id).first()
+    bank = Payout.query.filter_by(checkk=current_user.id).first()
+    amt = form.amount.data
+    withdraw_time = datetime.datetime.now()
+    withdraw_time = withdraw_time.replace(second=0, microsecond=0)
+    # h=0.90
+    # withdraw23 = amt*h
+ 
+    if not bank:
+        flash('Please bind bank first')
+        return redirect(url_for('withdrawl_page'))
+
     if form.validate_on_submit():
+        amt = form.amount.data
         if attempted_withdraw:
-            flash('Per day 1 is allowed')
+            flash('Per day 1 withdrawl is allowed')
+            # if not bank:               
+            #     flash('Bind account not bind')
+            # return redirect(url_for('withdrawl_page'))
         else:
-           if enter_amount>=150 and current_user.budget>=enter_amount:          
-               pay = Withdrawlss(amount=form.amount.data, passs=form.passs.data, user_id=current_user.id)
+           if (amt >= 149 and current_user.budget >= amt):
+               current_user.budget -= amt         
+               pay = Withdrawlss(amount=form.amount.data, passs=form.passs.data, user_id=current_user.id, withdraw2=form.amount.data*0.90, withdraw_time=withdraw_time)
                db.session.add(pay)
                db.session.commit()
                flash('Withdrawl submitted')
            else:
                flash('Minimum withdrawl amount is 150')
     # children = Payout.query.filter_by(check=current_user.id).all()
-    return render_template('with.html', form=form )
+    return render_template('with.html', form=form, bank=bank )
 
 
  
@@ -223,7 +251,7 @@ def method1():
             rech = Recharge(rech_amount=form.rech_amount.data, utr=form.utr.data, rech_owner=current_user.id)
             db.session.add(rech)
             db.session.commit()
-            flash('Submit successfully!')
+            flash('Submit successful!')
         else:
             flash('Minimum recharge amount is 499', category='danger')
     return render_template('method1.html', form=form)
@@ -276,3 +304,20 @@ def loginpass():
 @app.route('/personal setting')
 def setting():
     return render_template('setting.html')
+
+
+
+@app.route('/all types')
+def all_types():
+    return render_template('alltypes.html')
+
+
+
+@app.route('/recharges')
+def recharges():
+    return render_template('recharges.html')
+
+
+@app.route('/withs')
+def withs():
+    return render_template('withs.html')

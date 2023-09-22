@@ -1,135 +1,266 @@
-{% extends 'base.html' %}
-{% block title %}
-    Withdraw record
-{% endblock %}
-{% block content %}
-    
-    
-    <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Withdraw Record</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>team</title>
     <style>
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        *{
+            margin: 0;
+            padding: 0;
+           
+            font-family: Microsoft YaHei , sans-serif;
         }
 
-        body {
+        body{
+            background-color: black;
+            color: #fff;
+        }
+
+
+        nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+   
+}
+
+.left-corner button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: -14px;
+}
+
+a{
+    color: white; 
+    cursor: pointer;
+    text-decoration: none ; 
+}
+.level-box {
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 25px;
+    margin-right: 30%;
+    background-color: black;
+    margin-left: 20%;
+    margin: 58px;
+    
+    color: #fff;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: -1px 2px 8px #fff;
+    margin-top: 21px;
+    font-size: large;
+}
+
+.level-box2 {
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 25px;
+    margin-right: 30%;
+    background-color: black;
+    margin-left: 20%;
+    margin: 58px;
+    color: #fff;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: -1px 2px 8px #fff;
+    margin-top: 11px;
+    font-size: large;
+}
+
+
+
+.level-box3 {
+    text-align: center;
+    border: 2px solid #fff;
+    padding: 25px;
+    margin-right: 30%;
+    background-color: black;
+    margin-left: 20%;
+    margin: 58px;
+    color: #fff;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: -1px 2px 8px #fff;
+    font-size: large;
+    
+}
+
+
+.level-box:hover{
+    
+            background: #08b1ff88;
+        
+}
+
+
+.level-box2:hover{
+    
+            background: #08b1ff88;
+        
+}
+
+.level-box3:hover{
+    
+    background: #08b1ff88;
+
+}
+
+.container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            /* Add your logo styles here */
+            margin-top: 20px;
+        }
+        .logo img{
+            margin-top: -73px;
+            width: 100%;
+            height: auto;
+        }
+        .id {
+            font-size: 24px;
+            margin-top: 1px;
+            border: 1px solid white;
+        }
+
+        .id span{
+            font-size: 20px;
+             color: #007bff;
           
-            font-family: Arial, sans-serif;
-        background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            margin-top: 10%;
-            padding:20px;
-            background-image: url(https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
-            background-size: cover;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-            
-            animation: backgroundAnimation 7s linear infinite;
-}
+        .header-row {
+            background-color: white;
+            height: 40px;
+            margin-top: 20px;
+        }
 
-@keyframes backgroundAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }w
-}
+        .border-box {
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px -20px;
+            margin-top: -20px;
+        }
+
+        .left, .center, .right {
+           
+            background: #000000;
+            
+            padding: 12px;
+            border-radius: 10px;
+            border: 1.5px solid #fff;
+            box-shadow: -1px 2px 8px #fff;
+        }
+
+        .right:hover{
+            background: #08b1ff88;
+        }
+
+        .left:hover{
+            background: #08b1ff88;
+        }
+
+        .center:hover{
+            background: #08c5ff88;
+        }
+
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-direction: column;
+            
+            
+        }
+
+        .button-container:hover{
+            color: #0bc9e2;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+            background: #333; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            gap: 100px;
+            font-size: 15px;
+        }
+
+        button:hover{
+            
+            background: #0592bd;
+        }
+
         
 
-        h1 {
-            text-align: center;
-            background: linear-gradient(to right,#00A8FF, #8C55AA);
-            -webkit-background-clip: text;
-           -webkit-text-fill-color: transparent;
-            margin-bottom: 30px;
+        /* Media query for smartphones */
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            border: 1px solid rgb(9, 164, 236);
-            
-        }
-
-        th, td {
-            padding: 12px 8px;
-            text-align: left;
-            border-bottom: 1px solid #61bcd8;
-            border-left: 1px solid lightseagreen;
-        }
-
-        th {
-           /* background-color:aqua; */
-           background-size:auto;
-            font-weight:bolder;
-            font-size: 20px;
-           border-left: 1px solid rgb(0, 183, 255);
-        }
-
-        tr:nth-child(even) {
-            background-color: #b6d9dd41;
-            border-bottom: 1px solid rgb(178, 225, 247);
-        }
-
-        tr {
-            opacity: 0;
-            animation: fadeIn 1s ease-in forwards;
-        }
-
-        tr:nth-child(odd) {
-            animation-delay: 0.1s;
-            border-right: 1px solid rgb(0, 195, 255);
-        }
-
-        tr:nth-child(even) {
-            animation-delay: 0.2s;
-            border-bottom: 1px solid rgb(0, 255, 213);
-        }
+       
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Recharge Record</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
+    <nav>
+        <div class="left-corner">
+            <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-xl"></i></button>
+        </div>
+        <div class="center-heading" style=" font-size: 20px;">
+            Account Record
+         </div>
+    </nav>
 
-                {% for record in records %} 
-                <tr>
-                    <td>{{record.rech_time}}</td>
-                    <td>{{record.rech_amount}}</td>
-                    <td>{{record.withdraw_status}}</td>
+        <!-- <div class="button-container">
+            <button><i class="fa-solid fa-money-bill-transfer fa-lg"></i> Withdrawal</button>
+            <button><i class="fa-solid fa-indian-rupee-sign fa-xl"></i>&nbsp; Recharge</button>
+            <button><i class="fa-solid fa-calendar-days fa-xl"></i> My Plans</button>
+            
+            
+        </div> -->
+        <br>
+        
+        <div class="level-box">
+         <a href="">
+            All types
+         </a>
+        </div>
 
-                </tr>
-                {% endfor %}
-                <!-- Add more table rows with respective date, amount, and status -->
-            </tbody>
-        </table>
+        <div class="level-box2">
+            <a href="">
+                
+                Withdrawals
+            </a>
+          </div>
+
+          <div class="level-box3">
+           <a href="">Recharges</a>
+          </div>
+       
     </div>
 </body>
 </html>
-
-
-    
-   
-
-{% endblock %}
-{% include 'includes/icon.html' %}

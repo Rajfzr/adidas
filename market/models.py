@@ -21,11 +21,13 @@ class User(db.Model, UserMixin):
     referred_by = db.Column(db.Integer())
     referred_bonus = db.Column(db.Float(), default=0)
     recharge_amount = db.Column(db.Integer(), default=0)
+    status = db.Column(db.String())
     register_time = db.Column(db.DateTime, default=datetime.now)
     refer_code = db.Column(db.String(), default='link_id')
     items = db.relationship('Item', backref='owned_user', lazy=True)
-    payouts = db.relationship('Payout', backref='owned_payout', lazy=True)
-    recharges = db.relationship('Recharge', backref='owned_rech', lazy=True)
+    payouts = db.relationship('Payout', backref='user', lazy=True)
+    recharges = db.relationship('Recharge', backref='owned_rech', lazy=True)  
+    Withdrawlsss = db.relationship('Withdrawlss', backref='reffered_by', lazy=True)                      
 
     def update_referred_bonus(self):
         user = current_user
@@ -62,20 +64,25 @@ class Payout(db.Model):
     h_name = db.Column(db.String(), nullable=False)
     p_name = db.Column(db.String(), nullable=False)
     ac_name= db.Column(db.String(), nullable=False)
-    ac_number = db.Column(db.Integer(), nullable=False, unique=True)
+    ac_number = db.Column(db.String(), nullable=False)
+    ac_ifsc = db.Column(db.String(), nullable=False)
     w_pass = db.Column(db.String(), nullable=False)
+    checkk = db.Column(db.Integer())
     # withdraw = db.Column(db.Integer(), nullable=False)
     # withdraw2 = db.Column(db.Float(), nullable=False, unique=True)
     # withdraw_time = db.Column(db.DateTime, default=datetime.now)
     # withdraw_status = db.Column(db.String(), default='Pending')
-    check = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    owner_pay = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
 class Withdrawlss(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
-    amount = db.Column(db.String(), nullable=False)
+    amount = db.Column(db.Integer(), nullable=False)
     passs = db.Column(db.String(), nullable=False)
-    user_id = db.Column(db.String(), nullable=False)
-
+    user_id = db.Column(db.Integer(), nullable=False)
+    withdraw2 = db.Column(db.Float())
+    withdraw_time = db.Column(db.DateTime, default=datetime.now)
+    withdraw_status = db.Column(db.String(), default='Pending')
+    statuss = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
 class Buyer(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
