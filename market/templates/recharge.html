@@ -1,139 +1,173 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Recharge</title>
-  <style>
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    /* CSS for header */
-    
-    body{
-        background-image: url(https://img.freepik.com/premium-photo/abstract-luxury-gradient-blue_1258-15481.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Recharge</title>
+    <style>
 
-    /* CSS for box */
-    .box {
-      width: 700px;
-      height: 666px;
-     background-image: url(https://img.freepik.com/free-vector/background-line-abstract-gradient-colorful-style_483537-2554.jpg?size=626&ext=jpg&ga=GA1.1.722668303.1688113571&semt=ais);
-     background-size: cover;
-      margin: 100px auto;
-      border-radius: 20px;
-      text-align: center;
-      padding: 20px;
-      box-shadow: 10 10 10px rgba(24, 185, 177, 0.1);
-      animation: backgroundAnimation 5s linear infinite;
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: microsoft yahei, sans-serif;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #444;
+        }
 
-    
-  }
-  @keyframes backgroundAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-  }
- 
-
-
-    /* CSS for payment buttons */
-    .payment-btn {
-      display: inline-block;
-      background-color: #17bbe4;
-      color: #fff;
-      border: none;
-      padding: 14px 60px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 16px;
-      margin: 25px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
-
-    /* CSS for payment button hover effect */
-    .payment-btn:hover {
-      background-color: #076bdd;
-    }
-
-    .logo {
-      display: inline-block;
-      width: 98px;
-      height: 60px;
-      background-repeat: no-repeat;
-      background-size: contain;
-      margin: 30px;
-    }
-
-    /* BHIM UPI logo */
-    .logo-bhim {
-      background-image: url('https://zeevector.com/wp-content/uploads/Upi-Logo-Vector.png');
-    }
-
-    
-    /* Paytm logo */
-    .logo-paytm {
-      background-image: url('https://seeklogo.com/images/P/paytm-logo-EC097E9287-seeklogo.com.png');
-    }
-
-    /* Google Pay logo */
-   
-    @media only screen and (max-width: 480px) {
-      .box {
-        width: 90%;
-      }
-      .logo-container {
-        margin-top: 10px;
-      }
-    }
-    .heading{
-        font-size: 50px;
-        
-    }
-    .Recharge{
-
-padding-left: -4%;
-margin: 49px;
-font-size: 23px;
-
-color: #0a8efa;
-font-size: 17px;
-font-style: italic;
+        header {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 0;
 }
-  </style>
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.left-corner button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  
+}
+
+.center-heading  {
+    font-size: 35px;
+     display: flex;
+     justify-content: center;
+   
+}
+
+        .recharge-box {
+            background-color: black;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 20px;
+            text-align: center;
+            margin-top: 20px;
+           overflow: hidden;
+        }
+
+        .instruction-box {
+            background-color: black;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            color: skyblue;
+            padding: 50px;
+            margin: 20px;
+            line-height: 1.5rem;
+            margin-top: 20px;
+           overflow: scroll;
+        }
+
+        .instruction-box p{
+            font-size: 17px;
+            margin-left: -15px;
+        }
+
+        .instruction-box h1{
+           font-size: 28px;
+        }
+
+        .anchor-box {
+            margin-bottom: 20px;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+            
+        }
+
+        .rectangle-button {
+            background-color: #ffffff;
+            padding: 10px 0px;
+            margin-left: -10px;
+            text-decoration: none;
+            color: #444;
+            border: 1px solid #333;
+            border-radius: 5px;
+            
+            font-size: 20px;
+            display: flex; 
+            flex-direction: column;
+        }
+
+        .short-rectangle-box {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .short-rectangle {
+            border: 1px solid #ccc;
+            padding: 10px 14px;
+            /* width: 95%; */
+            text-align: center;
+            border-radius: 5px;
+            margin: 5px;
+            
+        }
+
+        section {
+            margin: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+        span {
+            font-style: italic;
+        }
+    </style>
+    <title>Recharge Page</title>
 </head>
 <body>
-  
-  
-   <br>
-   <br>
-   <br> 
-   <br>
-  <div class="box">
-    <h1 style="background: linear-gradient(to right,#0059ff, #6894bd);
-    -webkit-background-clip: text;
--webkit-text-fill-color: transparent;" class="heading">Recharge</h1>
-    <br><br>
-    <a href="{{url_for('method1')}}" class="payment-btn">Payment Method 1</a><br><br>
-    <a href="{{url_for('method2')}}"  class="payment-btn">Payment Method 2</a><br><br>
-    <a href="{{url_for('method3')}}" class="payment-btn">Payment Method 3</a><br><br>
-    <a href="{{url_for('personal')}}" class="Recharge">Recharge Record</a><br><br><br><br>
-    
-    <hr>
-    <div class="logo-container">
-    <div class="logo logo-bhim"></div>
-   
-    <div class="logo logo-paytm"></div>
-   
-</div>
-  </div>
- 
+    <header>
+        <nav>
+            <div class="left-corner">
+                <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-2xl"></i></button>
+            </div>
+            <div class="center-heading">
+               Recharge
+            </div>
+        </nav>
+    </header>
+    <div class="recharge-box">
+        <div class="anchor-box">
+            <a href="#" class="rectangle-button"> Click here & enter Amount</a>
+        </div>
+        <div class="short-rectangle-box">
+            <a href="https://cosmofeed.com/vp/6506bef3769fe7001e4c8eba"><div class="short-rectangle">&#8377; 499</div></a>
+            <a href=""><div class="short-rectangle">&#8377; 999</div></a>
+            <a href=""><div class="short-rectangle">&#8377; 1000</div></a>
+           <a href=""> <div class="short-rectangle">&#8377; 10000</div></a>
+        </div>
+    </div>
+    <div class="instruction-box">
+        <h1 style="color: white; text-align: center; margin-top: -25px;">instructions </h1><br>
+        
+        <p><sup>*</sup>Minimum recharge Amount is &#8377;499</p><br>
+        <p><sup>*</sup>Phone number & E-mail filled compoulsary</p><br>
+        <p><sup>*</sup>Recharge amount will be credit within 1-30  minutes</p><br>
+       
+        <p><sup>*</sup> If Any recharge enquiry contact us to Costumer Care</p>
+
+
+    </div>
+    <script>
+        // Your JavaScript code can go here if you need to add any interactivity.
+    </script>
 </body>
 </html>

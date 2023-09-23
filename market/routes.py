@@ -150,7 +150,9 @@ def icon_page():
 
 @app.route('/my')
 def my():
-    return render_template('my.html')
+    cars = User.query.filter_by(referred_by=current_user.id).all()
+    total_referincome2 = sum(car.referred_bonus for car in cars)
+    return render_template('my.html', cars=cars, total_referincome2=total_referincome2)
 
 @app.route('/referrals/<referral_code>')
 @login_required
@@ -167,12 +169,14 @@ def generate_referral_code():
 def team():
     friends = User.query.filter_by(referred_by=current_user.id).all()
     total_referincome = sum(friend.recharge_amount for friend in friends)
+    tits = User.query.filter_by(referred_by=current_user.id).all()
+    total = sum(tits.total for tit in tits)
     # toys = User.query.filter_by(referred_by=current_user.id).all()
     # total_referincome1 = sum(toy for toy in toys)
     print("Total Budget:", total_referincome)
     # total_profit = (profit.recharge_amount for profit in profits)
     # total = sum(profit.recharge_amount)
-    return render_template('team.html', friends=friends,   total_referincome=total_referincome)
+    return render_template('team.html', friends=friends, tits=tits,  total_referincome=total_referincome, total=total)
 
 @app.route('/team1')
 def team1():
@@ -309,15 +313,20 @@ def setting():
 
 @app.route('/all types')
 def all_types():
-    return render_template('alltypes.html')
+    cats = Recharge.query.filter_by(utr=current_user.id).all()
+    bats = Withdrawlss.query.filter_by(user_id=current_user.id).all()
+    return render_template('alltypes.html', cats=cats, bats=bats)
 
 
 
 @app.route('/recharges')
 def recharges():
-    return render_template('recharges.html')
+    rats = Recharge.query.filter_by(utr=current_user.id).all()
+    return render_template('recharges.html', rats=rats)
 
 
 @app.route('/withs')
 def withs():
-    return render_template('withs.html')
+    bikes = Withdrawlss.query.filter_by(user_id=current_user.id).all()
+    # total_referincome = sum(friend.recharge_amount for friend in friends)
+    return render_template('withs.html', bikes=bikes)

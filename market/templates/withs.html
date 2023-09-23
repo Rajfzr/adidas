@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Document</title>
+    <title>Withdraw status</title>
     <style>
      *{
         margin: 0;
@@ -156,7 +156,9 @@ img{
     <header>
     <nav>
         <div class="left-corner">
+            <a href="{{url_for('market_page')}}">
             <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-lg"></i></button>
+            </a>
         </div>
         <div class="center-heading">
            <p>Withdrawals</p>
@@ -165,14 +167,15 @@ img{
 </header>
 <main >
     <div class="norecord"> <p >No record</p></div>
+    {% for bike in bikes %}
     <ul data-v-b7e8b406="" style="padding: 10px">
        
     <li id="28">
         <div class="order_info">
             <div class="info_sucess"><span style="background-color: rgb(7, 142, 159); border-radius: 10px; padding: 4%;
-            box-shadow: -1px 5px 15px 0 #0592bd; border: 1px solid rgb(2, 2, 2); color: #ffffff;">&nbsp;Success&nbsp;</span></div>
-    <div class="info_money"><p class="money" >Phone:897****113</p><p class="money">Recommended number: 0</p></div></div></li><li id="28">
-       
+            box-shadow: -1px 5px 15px 0 #0592bd; border: 1px solid rgb(2, 2, 2); color: #ffffff;">&nbsp;{{bike.withdraw_status}}&nbsp;</span></div>
+    <div class="info_money"><p class="money" >{{bike.withdraw_time}}</p><p class="money">Withdrawal: -{{bike.withdraw2}}</p></div></div></li><li id="28">
+    {% endfor %}
    
   
     </div>

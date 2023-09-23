@@ -219,14 +219,14 @@
                 Recharge <br>{{current_user.recharge_amount}}
             </div>
             <div class="right">
-                Income <br> 00.00
+                Income <br> {{total_referincome2}}
             </div>
         </div>
         <div class="button-container">
-            <button><i class="fa-solid fa-money-bill-transfer fa-lg"></i>&nbsp;&nbsp;<a href="{{url_for('company')}}"> Withdrawal</a></button>
+            <button><i class="fa-solid fa-money-bill-transfer fa-lg"></i>&nbsp;&nbsp;<a href="{{url_for('withdrawls')}}"> Withdrawal</a></button>
             <button><i class="fa-solid fa-indian-rupee-sign fa-xl"></i>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('recharge')}}"> Recharge</a></button>
            <button><i class="fa-solid fa-calendar-days fa-xl"></i>&nbsp;&nbsp;&nbsp; <a href="{{url_for('method1')}}"> My Plans</a></button>
-           <button><i class="fa-solid fa-file fa-xl"></i> &nbsp;&nbsp;&nbsp; <a href="{{url_for('record')}}">Funds Records</a></button>
+           <button><i class="fa-solid fa-file fa-xl"></i> &nbsp;&nbsp;&nbsp; <a href="{{url_for('personal')}}">Funds Records</a></button>
             <button><i class="fa-solid fa-info fa-xl"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{url_for('company')}}">Information</a></button>
             <button><i class="fa-solid fa-gear fa-xl"></i>&nbsp;&nbsp;<a href="{{url_for('setting')}}">Personal Settings</a></button>
            

@@ -116,7 +116,10 @@ nav {
         }
 
         input[type=submit]{
-            margin-top: 100px;
+            margin-top: 16px;
+            background: #0592bd;
+            border-radius: 9px;
+            box-shadow: -1px 5px 15px 0 #0592bd;
         }
 
         .flash-message {
@@ -151,7 +154,9 @@ nav {
     <header>
         <nav>
             <div class="left-corner">
+                <a href="{{url_for('market_page')}}">
                 <button id="backButton"><i class="fa-solid fa-arrow-right fa-rotate-180 fa-lg"></i></button>
+                </a>
             </div>
             <div class="center-heading">
              <b>My Bank</b>

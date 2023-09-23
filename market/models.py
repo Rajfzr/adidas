@@ -21,6 +21,8 @@ class User(db.Model, UserMixin):
     referred_by = db.Column(db.Integer())
     referred_bonus = db.Column(db.Float(), default=0)
     recharge_amount = db.Column(db.Integer(), default=0)
+    total = db.Column(db.Integer(), default=1)
+    with_amount = db.Column(db.Integer(), default=0)
     status = db.Column(db.String())
     register_time = db.Column(db.DateTime, default=datetime.now)
     refer_code = db.Column(db.String(), default='link_id')
@@ -99,9 +101,9 @@ class Buyer(db.Model):
 class Recharge(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     rech_amount = db.Column(db.Integer(), nullable=False)
-    utr = db.Column(db.Integer(), nullable=False, unique=True)
-    rech_time = db.Column(db.DateTime, default=datetime.now)
-    withdraw_status = db.Column(db.String(), default='Pending')
+    rech_time = db.Column(db.Integer(), nullable=False)
+    utr = db.Column(db.Integer(), nullable=False)
+    withdraw_status = db.Column(db.String(), default='success')
     rech_owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
 

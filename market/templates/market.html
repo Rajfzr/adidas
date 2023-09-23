@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home page</title>
   <style>
     
 @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
@@ -366,7 +367,7 @@ body {
      <!-- s -->
      <div>
       <nav class="bottom-nav" style="position: relative; margin-top:10px ; ">
-          <a href="{{ url_for('market_page')}}" class="nav-item">
+          <a href="{{ url_for('recharge')}}" class="nav-item">
             <i class="fa-solid fa-indian-rupee-sign"></i>
             <span class="logo-name">RECHARGE</span>
           </a>
@@ -397,10 +398,10 @@ body {
       <h2>Plan A</h2>
       <p>Daily income, daily withdrawal</p>
       <div class="grid-container">
-        <div class="grid-box">Trading Price:1000</div>
-        <div class="grid-box">Daily Income:1000</div>
-        <div class="grid-box">Revenue Cycle:100</div>
-        <div class="grid-box">Total Income:100000</div>
+        <div class="grid-box">Trading Price:{{item.price}}</div>
+        <div class="grid-box">Daily Income:{{item.income}}</div>
+        <div class="grid-box">Revenue Cycle:{{item.cycle}}</div>
+        <div class="grid-box">Total Income:{{item.total_income}}</div>
       </div>
       <button class="start-button" onclick="showPopup()">Buy now</button>
 
