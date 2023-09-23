@@ -16,15 +16,7 @@ import string
 
 
 
-@app.before_request
-def before_request():
-    session.permanent = True
-    app.permanent_session_lifetime = timedelta(minutes=1)  # Set your desired session timeout here
-    last_activity = session.get('last_activity')
-    if last_activity is not None and (datetime.now() - last_activity).total_seconds() > app.permanent_session_lifetime.total_seconds():
-        # Clear the session to log the user out
-        session.clear()
-    session['last_activity'] = datetime.now()
+
 
 
 
