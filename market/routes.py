@@ -170,7 +170,7 @@ def team():
     friends = User.query.filter_by(referred_by=current_user.id).all()
     total_referincome = sum(friend.recharge_amount for friend in friends)
     tits = User.query.filter_by(referred_by=current_user.id).all()
-    total = sum(tits.total for tit in tits)
+    total = sum(tit.total for tit in tits)
     # toys = User.query.filter_by(referred_by=current_user.id).all()
     # total_referincome1 = sum(toy for toy in toys)
     print("Total Budget:", total_referincome)
