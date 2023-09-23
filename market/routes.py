@@ -71,7 +71,7 @@ def market_page():
 
         return redirect(url_for('market_page'))
     if request.method == "GET":
-        items = Item.query.filter_by(cycle=100).all()
+        items = Item.query.filter_by(price=499).all()
         toms = Item.query.filter_by(cycle=3).all()
         return render_template('market.html', items=items, purchase_form=purchase_form, toms=toms)              
 

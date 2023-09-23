@@ -422,7 +422,23 @@ body {
         </div>
     </div>
     </div>
-
+    <script>
+      // JavaScript code can be added here if needed
+      function showPopup() {
+          document.getElementById('popup1').style.display = 'flex';
+      }
+      function closePopup() {
+          document.getElementById('popup1').style.display = 'none';
+      }
+      function redirectToNextPage() {
+          // Add code to navigate to the next page here
+      }
+      function redirectToNextPage() {
+    // Navigate to the next page (replace 'next_page.html' with your actual page URL)
+    window.location.href = 'next_page.html';
+    }
+    
+    </script>
 
 
     {% endfor %}
@@ -439,7 +455,8 @@ body {
       <div class="grid-box">Revenue Cycle:100</div>
       <div class="grid-box">Total Income:100000</div>
     </div>
-    <button class="start-button" onclick="showPopup()">Buy now</button>
+
+
   </div>
   <!-- Repeat the smartphone interface section for the other boxes -->
 
@@ -448,23 +465,7 @@ body {
 
 
 
-<script>
-  // JavaScript code can be added here if needed
-  function showPopup() {
-      document.getElementById('popup1').style.display = 'flex';
-  }
-  function closePopup() {
-      document.getElementById('popup1').style.display = 'none';
-  }
-  function redirectToNextPage() {
-      // Add code to navigate to the next page here
-  }
-  function redirectToNextPage() {
-// Navigate to the next page (replace 'next_page.html' with your actual page URL)
-window.location.href = 'next_page.html';
-}
 
-</script>
 
 
 
