@@ -27,7 +27,7 @@ class User(db.Model, UserMixin):
     items = db.relationship('Item', backref='owned_user', lazy=True)
     payouts = db.relationship('Payout', backref='user', lazy=True)
     recharges = db.relationship('Recharge', backref='owned_rech', lazy=True)  
-    Withdrawlsss = db.relationship('Withdrawlss', backref='reffered_by', lazy=True)                      
+                     
 
     def update_referred_bonus(self):
         user = current_user
@@ -82,7 +82,7 @@ class Withdrawlss(db.Model):
     withdraw2 = db.Column(db.Float())
     withdraw_time = db.Column(db.DateTime, default=datetime.now)
     withdraw_status = db.Column(db.String(), default='Pending')
-    statuss = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    
 
 class Buyer(db.Model):
     id = db.Column(db.Integer(), primary_key=True)

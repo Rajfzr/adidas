@@ -44,7 +44,7 @@ def register_page():
         user_to_create = User(username=form.username.data, password=form.password1.data, with_password=form.with_password.data, refer_code=link_id, referral_code=generate_referral_code(), referred_by=referred_by, register_time=register_time)
         db.session.add(user_to_create)    
         db.session.commit()
-        flash('Account created successful')
+        flash('Register successful')
         return redirect(url_for('login_page'))
     if form.errors != {}:
         for err_msg in form.errors.values():
@@ -87,7 +87,7 @@ def login_page():
             return redirect(url_for('market_page'))
             
         else:
-            flash('Username and password are not match!', category='danger')    
+            flash('Not match!', category='danger')    
     return render_template('login.html', form=form)       
 
 @app.route('/logout')
