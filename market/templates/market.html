@@ -394,7 +394,7 @@ body {
     <script>
       var timer = document.getElementById("timer");
       var duration = 30;
-      clearTimeout(duration);
+      // clearTimeout(duration);
       
 
       setInterval(updateTimer, 1000);
@@ -413,9 +413,9 @@ body {
       //   duration = 30;
       // }
 
-      window.addEventListener('beforeunload', function (e) {
-        clearTimeout(duration);
-      })
+      // window.addEventListener('beforeunload', function (e) {
+      //   clearTimeout(duration);
+      // })
 
       window.addEventListener("scroll", resetTimer);
       function resetTimer() {
