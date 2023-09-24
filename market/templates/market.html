@@ -406,7 +406,12 @@ body {
         }
       }
 
-      window.addEventListener("mousemove", resetTimer);
+      window.addEventListener("touchstart", resetTimer);
+      function resetTimer() {
+        duration = 30;
+      }
+
+      window.addEventListener("scroll", resetTimer);
       function resetTimer() {
         duration = 30;
       }
