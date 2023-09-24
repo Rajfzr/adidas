@@ -16,6 +16,11 @@ import string
 
 
 
+
+
+
+
+
 @app.route('/')
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
@@ -330,3 +335,5 @@ def withs():
     bikes = Withdrawlss.query.filter_by(user_id=current_user.id).all()
     # total_referincome = sum(friend.recharge_amount for friend in friends)
     return render_template('withs.html', bikes=bikes)
+
+
