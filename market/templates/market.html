@@ -342,7 +342,7 @@ body {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Mainpage</title>
 </head>
-<body>
+<body id="timer">
     <div class="popup-overlay" id="popupOverlay">
         <div class="popup">
           <span class="close-btn" id="closeBtn"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i></span>
@@ -391,6 +391,26 @@ body {
      <a href="">RECHARGE</a>
      <a href="">TELEGRAM</a>
     </div> -->
+    <script>
+      var timer = document.getElementById("timer");
+      var duration = 30;
+
+      setInterval(updateTimer, 1000);
+
+      function updateTimer() {
+        duration--;
+        if (duration < 1) {
+          window.location = "{{url_for('logout_page')}}"
+        }  else {
+          timer.innnerText = duration;
+        }
+      }
+
+      window.addEventListener("mousemove", resetTimer);
+      function resetTimer() {
+        duration = 30;
+      }
+    </script>
     
     {% for item in items %} 
     <div class="smartphone-interface">
