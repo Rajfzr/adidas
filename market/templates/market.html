@@ -391,7 +391,7 @@ body {
      <a href="">RECHARGE</a>
      <a href="">TELEGRAM</a>
     </div> -->
-    <script>
+    <!-- <script>
       var timer = document.getElementById("timer");
       var duration = 30;
       // clearTimeout(duration);
@@ -421,7 +421,7 @@ body {
       function resetTimer() {
         duration = 30;
       }
-    </script>
+    </script> -->
     
     {% for item in items %} 
     <div class="smartphone-interface">
@@ -726,6 +726,107 @@ window.onload = openPopup;
           flashMessage.classList.remove('show');
       }, 3000);
   });
+</script>
+
+<script>
+  var cookietime = new Date();
+    cookietime.setTime(cookietime.getTime() + (300000));//coockie保存一小时
+    console.log(cookietime);
+    if ($.cookie("tan") == null) {
+        $.cookie("tan", "0");
+    }
+    var tanc = $.cookie("tan");
+    console.log(tanc);
+    if (tanc <= 0) {
+    layer.open({
+  type: 1 //Page层类型
+  ,area: ['95%','75%']
+  ,title: 'Notice'
+  ,shade: 0.6 //遮罩透明度
+  ,maxmin: false //允许全屏最小化
+  ,anim: 1 //0-6的动画形式，-1不开启
+  ,btn:['OK'],
+  skin: 'demo-class',
+  closeBtn: 1
+  ,content: $('#accd')
+  ,yes: function(index, layero){
+    $.cookie("tan", "1",{expires:cookietime});
+    console.log($.cookie("tan"));
+    layer.close(index);
+  }
+});
+
+    }
+
+    function wechat() {
+        layer.open({
+
+            type: 1,
+            closeBtn: 1,
+            title: 'Online service',
+            area: ['300px', '290px'] //宽高
+            , content: $('#ct')
+        });
+    }
+function wechat2(){
+    layer.open({
+        shadeClose:true,
+  type: 1,
+   closeBtn: 0,
+    title: 'Online service',
+  area: ['250px', '350px'], //宽高
+  btn:['OK']
+  ,content: $('#ctt')
+});
+}
+    $(document).ready(function(){
+        $('.buy').click(function(){ 
+        var cid = $(this).attr('cid');
+        layer.confirm('Are you sure you want to Confirm Purchase?',{
+            title:'',
+            btn:['Yes','No']
+        },function(){
+            $.ajax({
+                url: "/index/ctrl/lixibao_ru.html",
+                data: {cid:cid},
+                type: 'POST',
+                success: function (data) {
+                    layer.msg(data.info)
+                }
+            })
+        },function(){
+            //layer.msg('thank you.')
+        }
+        )
+      
+        })
+     });  
+
+    var speed = 100;
+    var app = document.getElementById('middle');
+    var slide1 = document.getElementById('slide1');
+    var slide2 = document.getElementById('slide2');
+    slide2.innerHTML = slide1.innerHTML;
+    var timer, timeout;
+
+    function marqueeMethods() {
+        clearTimeout(timeout)
+        if (slide2.offsetTop - app.scrollTop <= 0) {
+            app.scrollTop = app.scrollTop - slide1.offsetHeight;
+        } else {
+            app.scrollTop++;
+            if (app.scrollTop % ($('#slide1 li').eq(0).height()) == 0) {
+                clearTimeout(timeout);
+                clearInterval(timer);
+                timeout = setTimeout(function () {
+                    app.scrollTop++;
+                    return timer = setInterval(marqueeMethods, speed);
+                }, 2000);
+            }
+        }
+    }
+
+    timer = setInterval(marqueeMethods, speed);
 </script>
 </body>
 </html>
