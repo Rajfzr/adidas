@@ -158,6 +158,8 @@ def icon_page():
 
 @app.route('/my')
 def my():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     cars = User.query.filter_by(referred_by=current_user.id).all()
     total_referincome2 = sum(car.referred_bonus for car in cars)
     return render_template('my.html', cars=cars, total_referincome2=total_referincome2)
