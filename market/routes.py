@@ -14,7 +14,10 @@ import random
 import os
 import string
 
-
+def hide_mobile_number_middle_digits(usernames):
+    if len(usernames) == 10:
+        hidden_number = usernames[:3] + "****" + usernames[7:]
+        return hidden_number
 
 
 
@@ -27,10 +30,17 @@ def register_page():
     form = RegisterForm()
     register_time = datetime.datetime.now()
     register_time = register_time.replace(second=0, microsecond=0)
+    
+    
+    
     if form.validate_on_submit():
         referral_code=form.referral_code.data
         username=form.username.data
+        usernames = form.username.data
         link_id=generate_referral_code()
+        if len(usernames) == 10:
+            hidden_number = usernames[:3] + "****" + usernames[7:]
+            
      # Check if referral code exists in the database
         referred_by = None 
         if referral_code:
@@ -44,17 +54,21 @@ def register_page():
             # referred_by_user.referred_bonus += 100
             db.session.commit()
 
-    
+        if not len(username) == 10 :
+            flash('Invaild Phone')
 
-        user_to_create = User(username=form.username.data, password=form.password1.data, with_password=form.with_password.data, refer_code=link_id, referral_code=generate_referral_code(), referred_by=referred_by, register_time=register_time)
+
+        user_to_create = User(username=form.username.data, password=form.password1.data, dots=hidden_number, with_password=form.with_password.data, refer_code=link_id, referral_code=generate_referral_code(), referred_by=referred_by, register_time=register_time)
         db.session.add(user_to_create)    
         db.session.commit()
         flash('Register successful')
         return redirect(url_for('login_page'))
     if form.errors != {}:
         for err_msg in form.errors.values():
-            flash(f'There was an error: {err_msg}', category='danger')
+            flash(' {err_msg}', category='danger')
     return render_template('index.html', form=form)
+
+
 
 @app.route('/market', methods=['GET', 'POST'])
 def market_page():
@@ -80,7 +94,7 @@ def market_page():
         return redirect(url_for('market_page'))
     if request.method == "GET":
         items = Item.query.filter_by(price=499).all()
-        toms = Item.query.filter_by(price=990).all()
+        toms = Item.query.filter_by(price=988).all()
         return render_template('market.html', items=items, purchase_form=purchase_form, toms=toms)              
 
 
@@ -191,12 +205,18 @@ def team():
 @app.route('/team1')
 def team1():
     pets = User.query.filter_by(referred_by=current_user.id).all()
-    
     user = current_user
+    hidden_numbers = [hide_mobile_number_middle_digits(pet.username) for pet in pets]
+ 
     bonus = user.recharge_amount*0.2
     user.referred_bonus += bonus
     user.update_referred_bonus()
-    return render_template('team1.html', pets=pets)
+    return render_template('team1.html', pets=pets, hidden_numbers=hidden_numbers)
+
+def hide_mobile_number_middle_digits(usernames):
+    if len(usernames) == 10:
+        hidden_number = usernames[:3] + "****" + usernames[7:]
+        return hidden_number
     
 @app.route('/my product')
 def record():

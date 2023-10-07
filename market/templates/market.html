@@ -443,7 +443,7 @@ body {
             <span class="span2">
                 <button id="no-button" onclick="closePopup()">No</button>
           <form method="POST">
-              <input id="purchased_item" name="purchased_item" type="hidden" value="">
+              <input id="purchased_item" name="purchased_item" type="hidden" value="{{item.name}}">
               <input class="" id="submit" name="submit" type="submit" value="Yes">
             </form>
             </span>
@@ -481,10 +481,10 @@ body {
     <h2>Plan B</h2>
     <p>Daily income, daily withdrawal</p>
     <div class="grid-container">
-      <div class="grid-box">Trading Price:1000</div>
-      <div class="grid-box">Daily Income:1000</div>
-      <div class="grid-box">Revenue Cycle:100</div>
-      <div class="grid-box">Total Income:100000</div>
+      <div class="grid-box">Trading Price:{{tom.price}}</div>
+      <div class="grid-box">Daily Income:{{tom.income}}</div>
+      <div class="grid-box">Revenue Cycle:{{tom.cycle}}</div>
+      <div class="grid-box">Total Income:{{tom.total_income}}</div>
     </div>
     <button class="start-button" onclick="showPopup()">Buy now</button>
 

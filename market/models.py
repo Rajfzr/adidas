@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
     referred_bonus = db.Column(db.Float(), default=0)
     recharge_amount = db.Column(db.Integer(), default=0)
     total = db.Column(db.Integer(), default=1)
+    dots = db.Column(db.String(length=60))
     with_amount = db.Column(db.Integer(), default=0)
     status = db.Column(db.String())
     register_time = db.Column(db.DateTime, default=datetime.now)
