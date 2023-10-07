@@ -46,7 +46,7 @@ def keep_alive():
             except Exception as e:
                 print(f"Error executing keep-alive query: {str(e)}")
 
-            time.sleep(60)  # Sleep for 5 minutes (adjust as needed)
+            time.sleep(0)  # Sleep for 5 minutes (adjust as needed)
 
 # Create a function to start the keep-alive thread
 def start_keep_alive_thread():
