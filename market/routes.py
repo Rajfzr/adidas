@@ -100,7 +100,7 @@ def market_page():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
-    form = LoginForm()   
+    form = LoginForm()
     if form.validate_on_submit():
         attempted_user = User.query.filter_by(username=form.username.data).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
@@ -143,6 +143,8 @@ def withdrawl_page():
     # return render_template('withdrawl.html', form=form)
 
     form=WithdrawlForm()
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     if form.validate_on_submit():
            
            ac = Payout(h_name=form.h_name.data, p_name=form.p_name.data, ac_name=form.ac_name.data, ac_number=form.ac_number.data, ac_ifsc=form.ac_ifsc.data, w_pass=form.w_pass.data,  checkk=current_user.id)
@@ -163,6 +165,8 @@ def withdrawl_page():
 
 @app.route('/Income')
 def income_page():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     buy = Buyer.query.filter_by(item_owner=current_user.id).first()
     return render_template('income.html')
 
@@ -191,19 +195,22 @@ def generate_referral_code():
 
 @app.route('/team')
 def team():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     friends = User.query.filter_by(referred_by=current_user.id).all()
     total_referincome = sum(friend.recharge_amount for friend in friends)
     tits = User.query.filter_by(referred_by=current_user.id).all()
     total = sum(tit.total for tit in tits)
     # toys = User.query.filter_by(referred_by=current_user.id).all()
     # total_referincome1 = sum(toy for toy in toys)
-    print("Total Budget:", total_referincome)
     # total_profit = (profit.recharge_amount for profit in profits)
     # total = sum(profit.recharge_amount)
     return render_template('team.html', friends=friends, tits=tits,  total_referincome=total_referincome, total=total)
 
 @app.route('/team1')
 def team1():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     pets = User.query.filter_by(referred_by=current_user.id).all()
     user = current_user
     hidden_numbers = [hide_mobile_number_middle_digits(pet.username) for pet in pets]
@@ -220,25 +227,35 @@ def hide_mobile_number_middle_digits(usernames):
     
 @app.route('/my product')
 def record():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     return render_template('record.html')
 
 @app.route('/account record')
 def account():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     children = Payout.query.filter_by(checkk=current_user.id).all()
     return render_template('account.html', children=children)
 
 @app.route('/personal info')
 def personal():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     records = Recharge.query.filter_by(rech_owner=current_user.id).all()
     return render_template('info.html', records=records)
 
 @app.route('/company')
 def company():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     boys = Buyer.query.filter_by(item_owner=current_user.id).all()
     return render_template('company.html', boys=boys)
 
 @app.route('/withdrawls', methods=['GET', 'POST'])
 def withdrawls():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     form=PayoutForm()
     attempted_withdraw = Withdrawlss.query.filter_by(user_id=current_user.id).first()
     bank = Payout.query.filter_by(checkk=current_user.id).first()
@@ -343,6 +360,8 @@ def setting():
 
 @app.route('/all types')
 def all_types():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     cats = Recharge.query.filter_by(utr=current_user.id).all()
     bats = Withdrawlss.query.filter_by(user_id=current_user.id).all()
     return render_template('alltypes.html', cats=cats, bats=bats)
@@ -351,12 +370,16 @@ def all_types():
 
 @app.route('/recharges')
 def recharges():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     rats = Recharge.query.filter_by(utr=current_user.id).all()
     return render_template('recharges.html', rats=rats)
 
 
 @app.route('/withs')
 def withs():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login_page'))
     bikes = Withdrawlss.query.filter_by(user_id=current_user.id).all()
     # total_referincome = sum(friend.recharge_amount for friend in friends)
     return render_template('withs.html', bikes=bikes)
